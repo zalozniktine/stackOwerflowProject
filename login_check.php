@@ -1,9 +1,26 @@
 <?php
 //session_start();
 include_once 'povezava.php';
-$user = $_SESSION['user_id'];
-
-$stmt = $pdo->prepare("SELECT username FROM uporabniki WHERE id=?");
-$stmt->execute([$user]);
-echo $name = $stmt->fetchColumn();
+$email = $_POST['email'];
+$pass = $_POST['pass'];
+//preverim, če sem prejel podatke
+if (!empty($email) && !empty($pass)) {
+    //$pass = sha1($pass.$salt);
+    
+    $query = "SELECT * FROM uporabniki WHERE email=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$email]);
+    
+    if ($stmt->rowCount() == 1) {
+        $user = $stmt->fetch();
+        if (password_verify($pass, $user['pass'])) {
+            $_SESSION['user_id'] = $user['id'];        
+            //$_SESSION['admin'] = $user['admin'];        
+            header("Location: index.php");
+            echo 'uspesna prijava';
+        }
+    }
+}
+//header("Location: login.php");
+echo 'neuspesna prijava';
 ?>

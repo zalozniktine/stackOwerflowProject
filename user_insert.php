@@ -5,20 +5,20 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $pass1 = $_POST['password'];
 $pass2 = $_POST['password2'];
-$use = '1';
+$use = 1;
 
-$stmt = $pdo->query('SELECT username FROM uporabniki');
+$stmt = $pdo->query('SELECT email FROM uporabniki');
+
 while ($row = $stmt->fetch()) {
-    $row['username'] . "\n";
-    if ($username != $row['username']) {
-        echo $use = '0';
+    if ($email != $row['email']) {
+        $use = 0;
     }else{
-        $use = '1';
+        $use = 1;
     }
 }
 
     //preverim podatke, da so obvezi vnešeni
-    if (!empty($username) && !empty($email) && !empty($pass1) && ($pass1 == $pass2) && ($use == '0')) {
+    if (!empty($username) && !empty($email) && !empty($pass1) && ($pass1 == $pass2) && ($use == 0)) {
         //$pass = sha1($pass1.$salt);
         $pass = password_hash($pass1, PASSWORD_DEFAULT);
     

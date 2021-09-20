@@ -1,0 +1,9 @@
+.body{
+    background-color: white;
+    margin-top: 500px;
+}
+.form{
+    position: relative;
+    bottom: 400px;
+    left: 220px;
+}

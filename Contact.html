@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -95,9 +96,38 @@
       </div></header> 
     
     
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db"><div class="u-clearfix u-sheet u-sheet-1">
+    <!--<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-      </div></footer>
+      </div></footer>-->
+      <section class="body">
+        <div class="form">
+          <form action="">
+          <table>
+            <tr>
+              <td><h3>Ask a public question</h3></td>
+            </tr>
+            <tr>
+              <td><b>Title</b></td>
+            </tr>
+            <tr>
+              <td><input style="width: 700px;" type="text"></td>
+            </tr>
+            <tr>
+              <td><b>Body</b></td>
+            </tr>
+            <tr>
+              <td><textarea style="width: 50px;" name="Description" id="Description"></textarea>
+                <script>CKEDITOR.replace( 'Description' );</script></td>
+            </tr>
+        </form>
+      </table>
+        </div>
+
+
+
+
+
+      </section>
     <section class="u-backlink u-clearfix u-grey-80">
       <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
         <span>Website Templates</span>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include_once 'povezava.php';
 $user = $_SESSION['user_id'];
 
@@ -11,13 +11,18 @@ while ($row = $stmt->fetch())
 
 
 
-if (isset($_SESSION['user_id'])) {
-    echo '<div class="loginDisplay">
+/*if (isset($_SESSION['user_id'])) {*/
+    echo /*'<div class="loginDisplay">
 <tr>
-    <td> <p class="n">Prijavljeni ste kot: '.$username.'</p></td>
+    <td> <p class="n">Prijavljeni ste kot: '.*/$username/*.'</p></td>
     
 </tr>
 <tr><td><a class="odjava" href="odjava.php">Odjava</a></td></div>
 ';
-}
+}*/
+
+/*$stmt = $pdo->prepare("SELECT username FROM uporabniki WHERE id=?");
+$stmt->execute([$user]);
+$name = $stmt->fetchColumn();
+echo $name['username'];*/
 ?>

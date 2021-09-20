@@ -168,7 +168,8 @@ session_start();
                     <ul class="u-nav u-unstyled u-nav-3">
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;"><?php include 'login_check.php'
+                                style="padding: 10px 20px;"><?php include 'loginDisplay.php'?>
+                                <?php
 /*include_once 'povezava.php';
 $user = $_SESSION['user_id'];
 
