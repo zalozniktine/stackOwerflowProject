@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include_once 'povezava.php';
 $email = $_POST['email'];
 $pass = $_POST['pass'];
@@ -14,10 +14,11 @@ if (!empty($email) && !empty($pass)) {
     if ($stmt->rowCount() == 1) {
         $user = $stmt->fetch();
         if (password_verify($pass, $user['pass'])) {
-            $_SESSION['user_id'] = $user['id'];        
+            echo $_SESSION['user_id'] = $user['id'];        
             //$_SESSION['admin'] = $user['admin'];        
-            header("Location: index.php");
+            //header("Location: index.php");
             echo 'uspesna prijava';
+            die;
         }
     }
 }
