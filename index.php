@@ -225,6 +225,12 @@ echo $name = $stmt->fetchColumn();*/
                                     class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
                                     Question</a>
                                 <h3 class="u-text u-text-default u-text-4">Questions</h3>
+                                <br>
+                                <hr>
+                                <br>
+                                <?php
+                                include 'questions.php';
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -232,9 +238,7 @@ echo $name = $stmt->fetchColumn();*/
             </div>
         </div>
     </section>
-    <?php
-    include 'questions.php';
-    ?>
+
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
         <div class="u-clearfix u-sheet u-sheet-1">
