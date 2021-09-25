@@ -221,9 +221,17 @@ echo $name = $stmt->fetchColumn();*/
                         </div>
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
-                                <a href="https://nicepage.com/c/product-list-website-templates"
+                                <?php if(isset($_SESSION['user_id'])){ ?>
+                                <a href="ask_question.php"
                                     class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
                                     Question</a>
+                                <?php } ?>
+                                <?php if(!isset($_SESSION['user_id'])){ ?>
+                                <a href="login2.php"
+                                    class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
+                                    Question</a>
+                                <?php } ?>
+
                                 <h3 class="u-text u-text-default u-text-4">Questions</h3>
                                 <br>
                                 <hr>

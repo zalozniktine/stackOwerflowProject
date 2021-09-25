@@ -20,6 +20,11 @@ $id = $_GET['id'];
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" href="question.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script>
+
+    </script>
 
 
     <script type="application/ld+json">
@@ -216,7 +221,7 @@ $id = $_GET['id'];
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
                                 <a href="https://nicepage.com/c/product-list-website-templates"
-                                    class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
+                                    class="responsive u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
                                     Question</a>
                                 <h3 style="border-bottom: black 1px solid; width:600px; padding-bottom:10px; margin-left:0px"
                                     class="u-text u-text-default u-text-4">
@@ -226,6 +231,7 @@ $id = $_GET['id'];
                                         $stmt->execute([$id]);
                                         $question = $stmt->fetch();
                                         echo $question['Naslov'];
+
                                     ?>
                                 </h3>
                                 <?php
@@ -235,6 +241,35 @@ $id = $_GET['id'];
                                         $question = $stmt->fetch();
                                         echo $question['Opis'];
                                     ?>
+                                <hr>
+                                <!--
+                                <a onclick="myFunction()" style="font-size:14px" href="#">Add a comment</a>
+                                <form id="comment" action="comment_insert.php" method="post">
+                                    <textarea style="font-size:13px" name="comment" id="" cols="70" rows="2"></textarea>
+                                    <?php
+                                    //echo "<input name='question-id' type='hidden' value='$id'>";
+                                    ?>
+-->
+                                </form>
+                                <script>
+                                function myFunction() {
+                                    document.getElementById("comment").submit();
+                                }
+                                </script>
+
+
+
+                                <h4>Your answer:</h4>
+                                <form action="answer_insert.php" method="post">
+                                    <textarea name="answer" id="" cols="96" rows="10"></textarea>
+                                    <?php
+                                    echo "<input name='question_id' type='hidden' value='$id'>";
+                                    ?>
+                                    <input
+                                        class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1"
+                                        type="submit" value="Post Your Answer">
+
+                                </form>
                             </div>
                         </div>
                     </div>

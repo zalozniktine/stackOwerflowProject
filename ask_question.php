@@ -13,7 +13,7 @@ session_start();
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Contact</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
-    <link rel="stylesheet" href="Contact.css" media="screen">
+    <link rel="stylesheet" href="ask_question.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com">

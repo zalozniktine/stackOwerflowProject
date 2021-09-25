@@ -12,5 +12,5 @@ if (!empty($naslov) && !empty($opis) && isset($_SESSION['user_id'])) {
     $pdo->prepare($query)->execute([$user_id, $naslov, $opis, $dt]);
     echo "uspesno vneseno vprasanje";
 }
-header("Location: Contact.php");
+header("Location: index.php");
 ?>
