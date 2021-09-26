@@ -251,12 +251,62 @@ $id = $_GET['id'];
                                     ?>
 -->
                                 </form>
-                                <script>
-                                function myFunction() {
-                                    document.getElementById("comment").submit();
-                                }
-                                </script>
 
+                                <table>
+                                    <?php
+                                    $query2 = "SELECT * FROM odgovori WHERE vprasanje_id=?";
+                                    $stmt2 = $pdo->prepare($query2);
+                                    $stmt2->execute([$id]);
+                                    $count = $stmt2->rowCount();
+                                    
+                                    echo 
+                                        '<tr>'
+                                        .'<td>Stevilo odgovorov: '.$count.'</td>'
+                                        .'</tr> ';
+                                
+                                    while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+                                        echo
+                                        '<tr>'
+                                        .'<td>'.$answer['odgovor'].'</td>'
+                                        .'</tr> '; ?>
+                                    <script>
+                                    function myFunction(val) {
+                                        //document.getElementById("comment").submit();
+                                        document.getElementById(val).style.display = "inline";
+                                    }
+                                    </script>
+                                    <?php
+                                    $query3 = "SELECT * FROM komentarji WHERE odgovor_id=?";
+                                        $stmt3 = $pdo->prepare($query3);
+                                        $stmt3->execute([$answer['id']]);
+                                        while ($comment = $stmt3->fetch(PDO::FETCH_ASSOC)) {
+                                            echo
+                                        '<tr>'
+                                        .'<td></td>'
+                                        .'<td class="celica">'.$comment['komentar'].'</td>'
+                                        .'</tr> ';
+                                        }
+                                        echo
+                                        '<tr>'
+                                        .'<td><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
+                                        .'</tr>'
+                                        .'<tr>'
+                                        .'<td>
+                                        <form id="'.$answer['id'].'" style="display:none" action="comment_insert.php" method="post">
+                                        <table>
+                                        <tr>
+                                        <td><textarea  style="font-size:12px" name="comment" id="" cols="70" rows="2"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                        <td><input style="font-size:12px; float:right" type="submit" value="Submit"></td>
+                                        </tr>
+                                        </table>
+                                        </form>
+                                        </td>'
+                                        .'</tr>';
+                                    }
+                                ?>
+                                </table>
 
 
                                 <h4>Your answer:</h4>
