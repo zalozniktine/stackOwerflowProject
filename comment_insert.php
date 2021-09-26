@@ -3,10 +3,10 @@ require 'povezava.php';
 include 'session.php';
 
 echo $comment = $_POST['comment'];
-echo $queston_id = $_POST['question_id'];
+echo $answer_id = $_POST['answer_id'];
 
-$query = 'INSERT INTO odgovori (uporabnik_id,odgovor_id,komentar) VALUES (?,?,?)';
-$pdo->prepare($query)->execute([$user_id, $question_id, $pass]);
+$query = 'INSERT INTO komentarji (uporabnik_id,odgovor_id,komentar) VALUES (?,?,?)';
+$pdo->prepare($query)->execute([$user_id, $answer_id, $comment]);
 
 
 

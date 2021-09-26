@@ -298,7 +298,9 @@ $id = $_GET['id'];
                                         <td><textarea  style="font-size:12px" name="comment" id="" cols="70" rows="2"></textarea></td>
                                         </tr>
                                         <tr>
-                                        <td><input style="font-size:12px; float:right" type="submit" value="Submit"></td>
+                                        <td>
+                                        <input type="hidden" name="answer_id" value='.$answer['id'].'>
+                                        <input style="font-size:12px; float:right" type="submit" value="Submit"></td>
                                         </tr>
                                         </table>
                                         </form>
