@@ -263,16 +263,44 @@ $id = $_GET['id'];
                                         '<tr>'
                                         .'<td>Stevilo odgovorov: '.$count.'</td>'
                                         .'</tr> ';
-                                
+                                    $display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+
+                                        $query4 = "SELECT * FROM lajki WHERE odgovor_id=?";
+                                        $stmt4 = $pdo->prepare($query4);
+                                        $stmt4 ->execute([$answer['id']]);
+                                        while ($like = $stmt4->fetch(PDO::FETCH_ASSOC)) {
+                                            $display += $like['Value'];
+                                        }
                                         echo
                                         '<tr>'
-                                        .'<td>'.$answer['odgovor'].'</td>'
+                                        .'<td>
+                                        
+                                        <span style="padding-right:40px">
+                                        <table style="float:left">
+                                        </tr><td><a onclick="upvote()" href="#"><div class="arrow1"></div></a></td></tr>
+                                        </tr><td style="text-align:center">'.$display.'</td></tr>
+                                        </tr><td><a onclick="downvote()" href="#"><div class="arrow2"></div></a></td></tr>
+                                        </table>
+                                        <form id="upvote_id" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'></form>
+                                        <form id="downvote_id" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'></form>
+                                        </span>
+
+                                        '.$answer['odgovor']
+                                        .'</td>'
                                         .'</tr> '; ?>
                                     <script>
                                     function myFunction(val) {
                                         //document.getElementById("comment").submit();
                                         document.getElementById(val).style.display = "inline";
+                                    }
+
+                                    function upvote() {
+                                        document.getElementById("upvote_id").submit();
+                                    }
+
+                                    function downvote() {
+                                        document.getElementById("downvote_id").submit();
                                     }
                                     </script>
                                     <?php
@@ -282,20 +310,20 @@ $id = $_GET['id'];
                                         while ($comment = $stmt3->fetch(PDO::FETCH_ASSOC)) {
                                             echo
                                         '<tr>'
-                                        .'<td></td>'
-                                        .'<td class="celica">'.$comment['komentar'].'</td>'
+                                        //.'<td></td>'
+                                        .'<td style="padding-left:50px" class="celica">'.$comment['komentar'].'</td>'
                                         .'</tr> ';
                                         }
                                         echo
                                         '<tr>'
-                                        .'<td><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
+                                        .'<td ><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
                                         .'</tr>'
                                         .'<tr>'
                                         .'<td>
                                         <form id="'.$answer['id'].'" style="display:none" action="comment_insert.php" method="post">
                                         <table>
                                         <tr>
-                                        <td><textarea  style="font-size:12px" name="comment" id="" cols="70" rows="2"></textarea></td>
+                                        <td><textarea  style="font-size:12px;" name="comment" id="" cols="70" rows="2"></textarea></td>
                                         </tr>
                                         <tr>
                                         <td>

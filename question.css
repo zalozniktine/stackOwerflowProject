@@ -1,0 +1,20 @@
+.arrow2:hover {
+    background: url("images/down2.png") no-repeat;
+}
+.arrow2 {
+    background-size: contain;
+    width: 30px;
+    height: 15px;
+    background: url("images/downS.png") no-repeat;
+    display: inline-block;
+}
+.arrow1:hover {
+    background: url("images/up2.png") no-repeat;
+}
+.arrow1 {
+    background-size: contain;
+    width: 30px;
+    height: 15px;
+    background: url("images/upS.png") no-repeat;
+    display: inline-block;
+}
