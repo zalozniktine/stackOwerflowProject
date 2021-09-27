@@ -263,16 +263,18 @@ $id = $_GET['id'];
                                         '<tr>'
                                         .'<td>Stevilo odgovorov: '.$count.'</td>'
                                         .'</tr> ';
-                                    $display = 0;
+                                    //$display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
 
+                                        $display = 0;
                                         $query4 = "SELECT * FROM lajki WHERE odgovor_id=?";
                                         $stmt4 = $pdo->prepare($query4);
                                         $stmt4 ->execute([$answer['id']]);
                                         while ($like = $stmt4->fetch(PDO::FETCH_ASSOC)) {
                                             $display += $like['Value'];
                                         }
-                                        echo
+                                        //echo $display;
+                                        echo 
                                         '<tr>'
                                         .'<td>
                                         

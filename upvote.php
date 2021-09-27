@@ -33,4 +33,6 @@ if ($value == 1){
     echo "taki vnos je ze";
 }
 
+header('Location: question.php?id=$id');
+
 ?>
