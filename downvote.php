@@ -4,6 +4,8 @@ include 'session.php';
 
 $user = $user_id;
 $id = $_POST['answer_id'];
+$qid = $_POST['question_id'];
+
 $l = -1;
 $value = 3;
 
@@ -26,11 +28,13 @@ while ($row = $stmt->fetch())
 if ($value == 1){
     $stmt2 = $pdo->prepare('UPDATE lajki SET Value = ? WHERE uporabnik_id=? AND odgovor_id=?');
     $stmt2->execute([-1, $uporabnik, $odgovor]);
-}else if ($value != 0) {
+    header("Location: question.php?id=$qid");
+}else if ($value == 0) {
+    echo "taki vnos je ze";
+}else{
     $query = 'INSERT INTO lajki (Value,uporabnik_id,odgovor_id) VALUES (?,?,?)';
     $pdo->prepare($query)->execute([$l, $user, $id]);
-}else{
-    echo "taki vnos je ze";
+    header("Location: question.php?id=$qid");
 }
 
 ?>

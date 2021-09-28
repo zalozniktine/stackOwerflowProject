@@ -242,15 +242,6 @@ $id = $_GET['id'];
                                         echo $question['Opis'];
                                     ?>
                                 <hr>
-                                <!--
-                                <a onclick="myFunction()" style="font-size:14px" href="#">Add a comment</a>
-                                <form id="comment" action="comment_insert.php" method="post">
-                                    <textarea style="font-size:13px" name="comment" id="" cols="70" rows="2"></textarea>
-                                    <?php
-                                    //echo "<input name='question-id' type='hidden' value='$id'>";
-                                    ?>
--->
-                                </form>
 
                                 <table>
                                     <?php
@@ -273,6 +264,18 @@ $id = $_GET['id'];
                                         while ($like = $stmt4->fetch(PDO::FETCH_ASSOC)) {
                                             $display += $like['Value'];
                                         }
+                                        ?>
+
+                                    <?php
+                                        //echo $upvote = "upvote";
+                                        $upvote = $answer['id'];
+                                        $string = "upvote";
+                                        $string2 = "downvote";
+                                        $sam = "'";
+                                        $tog1 = $sam.$string.$upvote.$sam;
+                                        $dog2 = $sam.$string2.$upvote.$sam;
+                                        $tog = $string.$upvote;
+                                        $dog = $string2.$upvote;
                                         //echo $display;
                                         echo 
                                         '<tr>'
@@ -280,14 +283,13 @@ $id = $_GET['id'];
                                         
                                         <span style="padding-right:40px">
                                         <table style="float:left">
-                                        </tr><td><a onclick="upvote()" href="#"><div class="arrow1"></div></a></td></tr>
+                                        </tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>
                                         </tr><td style="text-align:center">'.$display.'</td></tr>
-                                        </tr><td><a onclick="downvote()" href="#"><div class="arrow2"></div></a></td></tr>
+                                        </tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>
                                         </table>
-                                        <form id="upvote_id" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'></form>
-                                        <form id="downvote_id" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'></form>
+                                        <form id="'.$tog.'" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
+                                        <form id="'.$dog.'" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
                                         </span>
-
                                         '.$answer['odgovor']
                                         .'</td>'
                                         .'</tr> '; ?>
@@ -297,12 +299,14 @@ $id = $_GET['id'];
                                         document.getElementById(val).style.display = "inline";
                                     }
 
-                                    function upvote() {
-                                        document.getElementById("upvote_id").submit();
+                                    function upvote(id1) {
+                                        //alert(id1);
+                                        document.getElementById(id1).submit();
                                     }
 
-                                    function downvote() {
-                                        document.getElementById("downvote_id").submit();
+                                    function downvote(id2) {
+                                        //alert(id2);
+                                        document.getElementById(id2).submit();
                                     }
                                     </script>
                                     <?php
