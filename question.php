@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'session.php';
+include 'povezava.php';
 
 $id = $_GET['id'];
 ?>
@@ -101,7 +102,7 @@ $id = $_GET['id'];
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <a href="https://nicepage.com" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
+            <a href="index.php" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1">
             </a>
@@ -175,7 +176,7 @@ $id = $_GET['id'];
                     <ul class="u-nav u-unstyled u-nav-3">
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;"><?php include 'loginDisplay.php'?>
+                                style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
                             </a>
                         </li>
                     </ul>
@@ -220,7 +221,15 @@ $id = $_GET['id'];
                         </div>
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
-                                <a href="https://nicepage.com/c/product-list-website-templates"
+                                <a href="
+                                <?php
+                                if(isset($user_id)){
+                                    echo 'ask_question.php';
+                                }else{
+                                    echo 'login2.php';
+                                }
+                                ?>
+                                "
                                     class="responsive u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
                                     Question</a>
                                 <h3 style="border-bottom: black 1px solid; width:600px; padding-bottom:10px; margin-left:0px"

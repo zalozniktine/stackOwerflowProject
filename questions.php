@@ -1,5 +1,6 @@
 <div>
     <?php
+    include 'povezava.php';
     $stmt = $pdo->query('SELECT * FROM vprasanja');
     echo '<table  class="izpis">';
     while ($row = $stmt->fetch()) {
@@ -12,11 +13,5 @@
     }
     echo '</table>';
     ?>
-    <form action="question.php" method="post">
-        <input type="hidden" value>
-    </form>
+
 </div>
-<script>
-function myFunction() {
-    document.getElementById("myForm").submit();
-</script>

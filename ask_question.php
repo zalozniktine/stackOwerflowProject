@@ -89,7 +89,7 @@ session_start();
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <a href="https://nicepage.com" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
+            <a href="index.php" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1">
             </a>

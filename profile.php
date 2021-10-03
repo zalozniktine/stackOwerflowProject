@@ -19,7 +19,9 @@ include 'povezava.php';
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="profile.css">
 
     <script type="application/ld+json">
     {
@@ -216,29 +218,86 @@ include 'povezava.php';
                         </div>
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
-                                <?php if(isset($_SESSION['user_id'])){ ?>
-                                <a href="ask_question.php"
-                                    class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
-                                    Question</a>
-                                <?php } ?>
-                                <?php if(!isset($_SESSION['user_id'])){ ?>
-                                <a href="login2.php"
-                                    class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Ask
-                                    Question</a>
-                                <?php } ?>
+                                <br>
+                                <table>
+                                    <tr>
+                                        <td>
 
-                                <h3 class="u-text u-text-default u-text-4">Questions</h3>
-                                <br>
-                                <hr>
-                                <br>
-                                <?php
-                                include 'questions.php';
-                                ?>
+
+                                            <?php if (!isset($_SESSION['user_image'])){
+                                                echo '
+                                                <div
+                                                style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
+                                                '.$user_name[0].'
+                                                </div>
+                                                ';
+                                            }else{
+                                                echo '<img src="profile_pictures/'.$_SESSION['user_image'].'">';
+                                            }
+                                            ?>
+
+                                        </td>
+                                        <td>
+                                            <?php echo '<h3 style="padding-left:15px">'.$user_name.'</h3>';  ?>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <ul style="padding-top: 30px" class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Activity</a>
+                                    </li>
+                                </ul>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="logo">
+                                                <?php if (!isset($_SESSION['user_image'])){
+                                                echo '
+                                                <div
+                                                style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
+                                                '.$user_name[0].'
+                                                </div>
+                                                ';
+                                            }else{
+                                                echo '<img style="border-radius: 5px; width:128px; height:128px;" src="profile_pictures/'.$_SESSION['user_image'].'">';
+                                            }
+                                            ?>
+                                            </div>
+
+                                            <a href="">
+                                                <div>
+                                                    <form action="/action_page.php">
+                                                        <label for="file-upload" class="custom-file-upload">
+                                                            <i class="fa fa-cloud-upload"></i>Change picture
+                                                        </label>
+                                                        <input id="file-upload" type="file" />
+                                                    </form>
+                                                </div>
+                                            </a>
+
                             </div>
+                            </td>
+                            <td>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email
+                                        address</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="name@example.com">
+                                </div>
+                            </td>
+                            </tr>
+                            </table>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
+        </div>
         </div>
     </section>
 

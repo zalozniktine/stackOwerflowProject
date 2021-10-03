@@ -1,0 +1,5 @@
+[28-Sep-2021 17:24:31 Europe/Ljubljana] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'oblaak_stackCloud.uporabniki' doesn't exist in /home/oblaak/public_html/user_insert.php:9
+Stack trace:
+#0 /home/oblaak/public_html/user_insert.php(9): PDO->query()
+#1 {main}
+  thrown in /home/oblaak/public_html/user_insert.php on line 9

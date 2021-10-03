@@ -1,5 +1,4 @@
 <?php
-//session_start();
 include_once 'povezava.php';
 $user = $_SESSION['user_id'];
 
@@ -9,8 +8,6 @@ while ($row = $stmt->fetch())
     $username = $row['username'];
 }
 
-echo $username/*."<a href=logout.php>Hey</a>";*/
-
-
+echo $username
 
 ?>
