@@ -1,5 +1,5 @@
 <?php
-include 'session.php';
+session_start();
 include 'povezava.php';
 ?>
 <!DOCTYPE html>
@@ -170,7 +170,7 @@ include 'povezava.php';
                         <li class="u-nav-item"><a href="profile.php"
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){
-                                    echo $user_name;
+                                    echo $_SESSION['user_name'];
                                 } ?>
                             </a>
                         </li>

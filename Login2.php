@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html style="font-size: 16px">
+<?php include "google_login/login.php" ; ?>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -244,18 +245,19 @@
             <img class="u-image u-image-default u-preserve-proportions u-image-1"
                 src="images/1200px-Stack_Overflow_logo.svg-Copy.png" alt="" data-image-width="201"
                 data-image-height="236" />
-            <a href="https://nicepage.com/landing-page" class="
-            u-active-palette-5-light-1
-            u-border-1
-            u-border-grey-90
-            u-btn
-            u-btn-round
-            u-button-style
-            u-grey-5
-            u-hover-palette-5-light-2
-            u-radius-6
-            u-btn-1
-          "><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px"
+            <a href="<?php echo $client->createAuthUrl(); ?>" class="
+login-btn
+u-active-palette-5-light-1
+u-border-1
+u-border-grey-90
+u-btn
+u-btn-round
+u-button-style
+u-grey-5
+u-hover-palette-5-light-2
+u-radius-6
+u-btn-1
+"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px"
                         style="width: 1em; height: 1em">
                         <path style="fill: #fbbb00"
                             d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256  c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456  C103.821,274.792,107.225,292.797,113.47,309.408z">
