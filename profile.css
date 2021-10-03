@@ -1,4 +1,16 @@
-.change:hover{
+.postmedia{
+    height: 128px;
+    width: 128px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+.left{
+    float: left;
+}
+
+/*.change:hover{
     background-color: #404040 !important;
 }
 input[type="file"] {

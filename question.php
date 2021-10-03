@@ -174,8 +174,8 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                        <li class="u-nav-item"><a href="profile.php"
+                                class="u-button-style u-na v-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
                             </a>
                         </li>

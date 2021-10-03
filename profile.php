@@ -1,6 +1,13 @@
 <?php
 include 'session.php';
 include 'povezava.php';
+
+if (!isset($_SESSION['user_id'])){
+    header("location:login2.php");
+    die();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
@@ -169,7 +176,7 @@ include 'povezava.php';
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a
+                        <li class="u-nav-item"><a href="profile.php"
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){
                                     echo $user_name;
@@ -224,7 +231,17 @@ include 'povezava.php';
                                         <td>
 
 
-                                            <?php if (!isset($_SESSION['user_image'])){
+                                            <?php 
+                                            $query = "SELECT * FROM uporabniki WHERE id=?";
+                                            $stmt = $pdo->prepare($query);
+                                            $stmt->execute([$user_id]);
+                                            $profile = $stmt->fetch();
+                                            $email = $profile['email'];
+                                            $username = $profile['username'];
+                                            $email = $profile['email'];
+                                            $img = $profile['image'];
+                                            
+                                            if (empty($img)){
                                                 echo '
                                                 <div
                                                 style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
@@ -232,7 +249,8 @@ include 'povezava.php';
                                                 </div>
                                                 ';
                                             }else{
-                                                echo '<img src="profile_pictures/'.$_SESSION['user_image'].'">';
+                                                echo
+                                                '<img class="postmedia" src="'.$img.'">';
                                             }
                                             ?>
 
@@ -242,6 +260,7 @@ include 'povezava.php';
                                         </td>
                                     </tr>
                                 </table>
+
                                 <ul style="padding-top: 30px" class="nav nav-tabs">
                                     <li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="#">Profile</a>
@@ -250,54 +269,60 @@ include 'povezava.php';
                                         <a class="nav-link" href="#">Activity</a>
                                     </li>
                                 </ul>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div class="logo">
-                                                <?php if (!isset($_SESSION['user_image'])){
-                                                echo '
-                                                <div
-                                                style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
-                                                '.$user_name[0].'
-                                                </div>
-                                                ';
-                                            }else{
-                                                echo '<img style="border-radius: 5px; width:128px; height:128px;" src="profile_pictures/'.$_SESSION['user_image'].'">';
-                                            }
-                                            ?>
-                                            </div>
+                                <div class="left">
+                                    <div>
+                                        <h5>Change picture</h5>
+                                        <form enctype="multipart/form-data" action="profile_update.php" method="post"
+                                            class="mb-3 row">
+                                            <input type="file" name="fileToUpload" class="file-uploader pull-left"
+                                                onchange="loadfile(event)">
+                                    </div>
+                                    <script type="text/javascript">
+                                    function loadfile(event) {
+                                        var output = document.getElementById('imagePreview');
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                    }
+                                    </script>
+                                    <br>
+                                    <div class="postmedias">
+                                        <img class="postmedia" src="
+                                                    images/placeholder.png" alt="image Preview" id="imagePreview">
+                                    </div>
+                                </div>
 
-                                            <a href="">
-                                                <div>
-                                                    <form action="/action_page.php">
-                                                        <label for="file-upload" class="custom-file-upload">
-                                                            <i class="fa fa-cloud-upload"></i>Change picture
-                                                        </label>
-                                                        <input id="file-upload" type="file" />
-                                                    </form>
-                                                </div>
-                                            </a>
 
-                            </div>
-                            </td>
-                            <td>
-                                <div class="mb-3">
+                                <div class="mb-3 left">
                                     <label for="exampleFormControlInput1" class="form-label">Email
                                         address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="name@example.com">
+                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="name@example.com" value="<?php echo $email;?>">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control"
+                                        id="exampleFormControlInput1" placeholder="username"
+                                        value="<?php echo $username;?>">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label">Password <small>(If
+                                            empty, won't change)</small></label>
+                                    <input type="password" name="pass" class="form-control"
+                                        id="exampleFormControlInput1" placeholder="password">
+                                    <br>
+
+                                    <div class="col-auto">
+                                        <button type="submit" name="ssubmit" class="btn btn-primary mb-3">Save
+                                            profile</button>
+                                    </div>
+                                    <!---<input type="submit" name="ssubmit">-->
                                 </div>
-                            </td>
-                            </tr>
-                            </table>
+                                </form>
+                            </div>
                         </div>
+
+
+
                     </div>
-
-
-
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
