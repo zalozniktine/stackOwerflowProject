@@ -7,6 +7,21 @@ $email = $_POST['email'];
 $pass1 = $_POST['pass'];
 //$file = $_POST['fileToUpload'];
 
+$query = "SELECT * FROM uporabniki WHERE id=?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$user_id]);
+$google = $profile['google_id'];
+    
+
+$stmt2 = $pdo->prepare('SELECT * FROM uporabniki');
+while ($row = $stmt2->fetch()) {
+    if($row['email']==$email){
+        header('location:../profile.php');
+        exit;
+    }
+}
+
+
 if(!empty($pass1)){
     $pass = password_hash($pass1, PASSWORD_DEFAULT);
     $stmt = $pdo->prepare('UPDATE uporabniki SET email = ?, username = ?, pass = ? WHERE id = ?');

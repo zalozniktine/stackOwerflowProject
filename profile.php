@@ -47,6 +47,7 @@ if (!isset($_SESSION['user_id'])){
 
 <body data-home-page="https://stackowerflow.nicepage.io/Home.html?version=2d41e077-21ae-4b91-b81d-c58cb51ca37a"
     data-home-page-title="Home" class="u-body">
+
     <header class="u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-header" id="sec-563b">
         <?php
 ?>
@@ -290,22 +291,27 @@ if (!isset($_SESSION['user_id'])){
                                     </div>
                                 </div>
 
-
                                 <div class="mb-3 left">
-                                    <label for="exampleFormControlInput1" class="form-label">Email
-                                        address</label>
-                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="name@example.com" value="<?php echo $email;?>">
+                                    <div id="hide">
+                                        <label id="hide" for="exampleFormControlInput1" class="form-label">Email
+                                            address</label>
+                                        <input id="hide" type="email" name="email" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="name@example.com"
+                                            value="<?php echo $email;?>">
+                                    </div>
                                     <br>
                                     <label for="exampleFormControlInput1" class="form-label">Username</label>
                                     <input type="text" name="username" class="form-control"
                                         id="exampleFormControlInput1" placeholder="username"
                                         value="<?php echo $username;?>">
                                     <br>
-                                    <label for="exampleFormControlInput1" class="form-label">Password <small>(If
-                                            empty, won't change)</small></label>
-                                    <input type="password" name="pass" class="form-control"
-                                        id="exampleFormControlInput1" placeholder="password">
+                                    <div id="hide">
+                                        <label for="exampleFormControlInput1" class="form-label">Password
+                                            <small>(If
+                                                empty, won't change)</small></label>
+                                        <input id="hide" type="password" name="pass" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="password">
+                                    </div>
                                     <br>
 
                                     <div class="col-auto">
