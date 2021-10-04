@@ -10,9 +10,14 @@ if (!isset($_SESSION['user_id'])){
 
 ?>
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html lang="en" style="font-size: 16px;">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -26,8 +31,6 @@ if (!isset($_SESSION['user_id'])){
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="profile.css">
 
     <script type="application/ld+json">
@@ -229,8 +232,6 @@ if (!isset($_SESSION['user_id'])){
                                 <table>
                                     <tr>
                                         <td>
-
-
                                             <?php 
                                             $query = "SELECT * FROM uporabniki WHERE id=?";
                                             $stmt = $pdo->prepare($query);
@@ -263,63 +264,92 @@ if (!isset($_SESSION['user_id'])){
 
                                 <ul style="padding-top: 30px" class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="profile.php">Profile</a>
+                                        <a class="nav-link" href="profile.php">Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="activity.php">Activity</a>
+                                        <a class="nav-link active" aria-current="page" href="activity.php">Activity</a>
                                     </li>
                                 </ul>
-                                <div class="left">
-                                    <div>
-                                        <h5>Change picture</h5>
-                                        <form enctype="multipart/form-data" action="profile_update.php" method="post"
-                                            class="mb-3 row">
-                                            <input type="file" name="fileToUpload" class="file-uploader pull-left"
-                                                onchange="loadfile(event)">
-                                    </div>
-                                    <script type="text/javascript">
-                                    function loadfile(event) {
-                                        var output = document.getElementById('imagePreview');
-                                        output.src = URL.createObjectURL(event.target.files[0]);
-                                    }
-                                    </script>
-                                    <br>
-                                    <div class="postmedias">
-                                        <img class="postmedia" src="
-                                                    images/placeholder.png" alt="image Preview" id="imagePreview">
-                                    </div>
+
+                                <div class="btn-group dropend">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select activity
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button onclick="vprasanja()" class="dropdown-item"
+                                                type="button">Questions</button></li>
+                                        <li><button onclick="odgovori()" class="dropdown-item"
+                                                type="button">Answers</button></li>
+                                        <li><button onclick="komentarji()" class="dropdown-item"
+                                                type="button">Comments</button></li>
+                                    </ul>
+                                </div>
+                                <script>
+                                function vprasanja() {
+                                    //document.getElementById("comment").submit();
+                                    document.getElementById('vprasanja').style.display = "inline";
+                                    document.getElementById('odgovori').style.display = "none";
+                                    document.getElementById('komentarji').style.display = "none";
+                                }
+
+                                function odgovori() {
+                                    //document.getElementById("comment").submit();
+                                    document.getElementById('vprasanja').style.display = "none";
+                                    document.getElementById('odgovori').style.display = "inline";
+                                    document.getElementById('komentarji').style.display = "none";
+                                }
+
+                                function komentarji() {
+                                    //document.getElementById("comment").submit();
+                                    document.getElementById('vprasanja').style.display = "none";
+                                    document.getElementById('odgovori').style.display = "none";
+                                    document.getElementById('komentarji').style.display = "inline";
+                                }
+                                </script>
+                                <div id="vprasanja">
+                                    <h4>Your questions:</h4>
+                                    <?php
+
+                                    $stmt = $pdo->prepare('SELECT * FROM vprasanja WHERE uporabnik_id=?');
+                                    $stmt->execute([$user_id]);
+                                    echo '<ul class="list-group list-group-flush">';
+                                    while ($user = $stmt->fetch()) {
+                                        echo
+                                        '<li class="list-group-item"><a href="question.php?id='.$user['id'].'">'.$user['Naslov'].'</a></li>';
+                                        }
+                                    echo '</ul>';
+                                    ?>
+                                </div>
+                                <div id="odgovori">
+                                    <h4>Your answers:</h4>
+                                    <?php
+                                    $stmt2 = $pdo->prepare('SELECT v.id AS id, o.odgovor AS Naslov FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id WHERE o.uporabnik_id=?');
+                                    $stmt2->execute([$user_id]);
+                                    echo '<ul class="list-group list-group-flush">';
+                                    while ($row2 = $stmt2->fetch()) {
+                                        echo
+                                        '<li class="list-group-item"><a href="question.php?id='.$row2['id'].'">'.$row2['Naslov'].'</a></li>';
+                                        }
+                                    echo '</ul>';
+                                    ?>
+                                </div>
+                                <div id="komentarji">
+                                    <h4>Your Comments:</h4>
+                                    <?php
+                                    $stmt3 = $pdo->prepare('SELECT v.id AS id, k.komentar AS Naslov FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id INNER JOIN komentarji k ON k.odgovor_id=o.id WHERE k.uporabnik_id=?');
+                                    $stmt3->execute([$user_id]);
+                                    echo '<ul class="list-group list-group-flush">';
+                                    while ($row3 = $stmt3->fetch()) {
+                                        echo
+                                        '<li class="list-group-item"><a href="question.php?id='.$row3['id'].'">'.$row3['Naslov'].'</a></li>';
+                                        }
+                                    echo '</ul>';
+                                    ?>
                                 </div>
 
-
-                                <div class="mb-3 left">
-                                    <label for="exampleFormControlInput1" class="form-label">Email
-                                        address</label>
-                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="name@example.com" value="<?php echo $email;?>">
-                                    <br>
-                                    <label for="exampleFormControlInput1" class="form-label">Username</label>
-                                    <input type="text" name="username" class="form-control"
-                                        id="exampleFormControlInput1" placeholder="username"
-                                        value="<?php echo $username;?>">
-                                    <br>
-                                    <label for="exampleFormControlInput1" class="form-label">Password <small>(If
-                                            empty, won't change)</small></label>
-                                    <input type="password" name="pass" class="form-control"
-                                        id="exampleFormControlInput1" placeholder="password">
-                                    <br>
-
-                                    <div class="col-auto">
-                                        <button type="submit" name="ssubmit" class="btn btn-primary mb-3">Save
-                                            profile</button>
-                                    </div>
-                                    <!---<input type="submit" name="ssubmit">-->
-                                </div>
-                                </form>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
