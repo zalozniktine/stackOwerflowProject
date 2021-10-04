@@ -38,6 +38,27 @@ if(isset($_GET['code'])):
         $profile_pic = ($google_account_info->picture);
 
         // checking user already exists or not
+        $get_user = "SELECT * FROM uporabniki WHERE google_id=?";
+        
+        
+        $user = $pdo->prepare($get_user);
+        $user->execute([$id]);
+        $google_id = $user->fetch();
+
+        $stmt = $pdo->prepare("SELECT * FROM uporabniki WHERE google_id=?");
+        $stmt->execute([$id]);
+        $userExists = $stmt->fetchColumn();
+        
+
+        if($userExists){
+            //echo $id;
+            $_SESSION['user_id'] = $google_id['id'];
+            $_SESSION['user_name'] = $google_id['username']; 
+            header('Location: ../profile.php');
+            exit;
+        }else{
+        
+        
         /*
         $get_user = mysqli_query($pdo, "SELECT `google_id` FROM `users` WHERE `google_id`='$id'");
         if(mysqli_num_rows($get_user) > 0){
@@ -62,6 +83,7 @@ if(isset($_GET['code'])):
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['username'];
             //echo /*$_SESSION['user_id'] = */$user;
+            echo 'vneslo novega userja';
             header('location:../index.php');
             //header('Location: home.php');
             /*
@@ -74,12 +96,13 @@ if(isset($_GET['code'])):
                 echo "Sign up failed!(Something went wrong).";
             }*/
 
-        //}
+        }
 
     }
     else{
-        header('Location: login2.php');
-        exit;
+        echo 'skos vse slo';
+        //header('Location: ../index.php');
+        //exit;
     }
     
 else: 

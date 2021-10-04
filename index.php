@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'session.php';
 include 'povezava.php';
 ?>
 <!DOCTYPE html>
