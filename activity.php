@@ -210,7 +210,7 @@ if (!isset($_SESSION['user_id'])){
             <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
                 <div class="u-layout">
                     <div class="u-layout-row">
-                        <div
+                        <div style="display:none"
                             class="u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
                             <div class="u-container-layout u-container-layout-1">
                                 <h5 class="u-hidden-xs u-text u-text-1">Home</h5>

@@ -208,7 +208,7 @@ if (!isset($_SESSION['user_id'])){
             <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
                 <div class="u-layout">
                     <div class="u-layout-row">
-                        <div
+                        <div style="display:none"
                             class="u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
                             <div class="u-container-layout u-container-layout-1">
                                 <h5 class="u-hidden-xs u-text u-text-1">Home</h5>
@@ -338,15 +338,7 @@ if (!isset($_SESSION['user_id'])){
         </div>
     </footer>
     <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Template</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-            <span>HTML Builder</span>
-        </a>.
+
     </section>
 </body>
 
