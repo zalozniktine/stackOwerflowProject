@@ -18,3 +18,28 @@
     background: url("images/upS.png") no-repeat;
     display: inline-block;
 }
+
+textarea {
+    width:90%;
+    max-width:90%;
+    max-height:30%;
+    resize:vertical;
+}
+.width{
+    width:90%;
+    max-width:90%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .hide{
+        display: none;
+    }
+    .padd{
+        position: relative;
+        right: 15px;
+    }
+  }
+body {
+    overflow-x: hidden !important;
+}

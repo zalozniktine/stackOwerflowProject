@@ -45,12 +45,12 @@ $id = $_GET['id'];
 
 <body data-home-page="https://stackowerflow.nicepage.io/Home.html?version=2d41e077-21ae-4b91-b81d-c58cb51ca37a"
     data-home-page-title="Home" class="u-body">
-    <header class="resp u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-header" id="sec-563b">
+    <header class="u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-header" id="sec-563b">
         <?php
 ?>
-        <div class="padd u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xs u-sheet-1">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xs u-sheet-1">
             <nav class="u-hidden-lg u-hidden-md u-hidden-sm u-hidden-xl u-menu u-menu-dropdown u-offcanvas u-menu-1">
-                <div class="padd menu-collapse">
+                <div class="menu-collapse">
                     <a class="u-button-style u-nav-link" href="#">
                         <svg>
                             <use xlink:href="#menu-hamburger"></use>
@@ -174,9 +174,9 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a style="position:relative; top:7px;" href="profile.php"
+                        <li class="u-nav-item"><a href="profile.php"
                                 class="u-button-style u-na v-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="margin-top: 100px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
+                                style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
                             </a>
                         </li>
                     </ul>
@@ -204,7 +204,7 @@ $id = $_GET['id'];
                 <div class="u-layout">
                     <div class="u-layout-row">
                         <div
-                            class="hide u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
+                            class="u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
                             <div class="u-container-layout u-container-layout-1">
                                 <h5 class="u-hidden-xs u-text u-text-1">Home</h5>
                                 <p class="u-hidden-xs u-text u-text-default u-text-2">PUBLIC</p>
@@ -221,8 +221,20 @@ $id = $_GET['id'];
                         </div>
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
-                                <div class="width">
-                                    <h3 style="margin-top:10px; border-bottom: black 1px solid; padding-bottom:10px; margin-left:0px"
+                                <div class="button">
+                                    <a href="
+                                <?php
+                                if(isset($user_id)){
+                                    echo 'ask_question.php';
+                                }else{
+                                    echo 'login2.php';
+                                }
+                                ?>
+                                " class=" u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base
+                                    u-radius-6 u-btn-1">Ask
+                                        Question</a>
+
+                                    <h3 style="border-bottom: black 1px solid; width:600px; padding-bottom:10px; margin-left:0px"
                                         class="u-text u-text-default u-text-4">
                                         <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
@@ -234,15 +246,14 @@ $id = $_GET['id'];
                                     ?>
                                     </h3>
                                 </div>
-                                <p class="width">
-                                    <?php
+                                <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
                                         $stmt = $pdo->prepare($query);
                                         $stmt->execute([$id]);
                                         $question = $stmt->fetch();
                                         echo $question['Opis'];
                                     ?>
-                                </p>
+                                <hr>
 
                                 <table>
                                     <?php
@@ -352,7 +363,8 @@ $id = $_GET['id'];
                                     <?php
                                     echo "<input name='question_id' type='hidden' value='$id'>";
                                     ?>
-                                    <input class="u-btn-round u-button-style u-palette-1-base u-radius-6 u-btn-1"
+                                    <input
+                                        class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1"
                                         type="submit" value="Post Your Answer">
 
                                 </form>
@@ -365,13 +377,13 @@ $id = $_GET['id'];
     </section>
 
 
-    <footer class="hide u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
         <div class="u-clearfix u-sheet u-sheet-1">
             <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click
                 again or double click to start editing the text.</p>
         </div>
     </footer>
-    <section class="hide u-backlink u-clearfix u-grey-80">
+    <section class="u-backlink u-clearfix u-grey-80">
         <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
             <span>HTML Template</span>
         </a>
