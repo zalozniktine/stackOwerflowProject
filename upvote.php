@@ -2,6 +2,11 @@
 require 'povezava.php';
 include 'session.php';
 
+if(!isset($user_id)){
+    header("location:login2.php");
+    exit;
+}
+
 $user = $user_id;
 $id = $_POST['answer_id'];
 $qid = $_POST['question_id'];
