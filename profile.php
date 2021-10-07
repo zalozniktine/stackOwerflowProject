@@ -243,12 +243,7 @@ if (!isset($_SESSION['user_id'])){
                                             $img = $profile['image'];
                                             
                                             if (empty($img)){
-                                                echo '
-                                                <div
-                                                style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
-                                                '.$user_name[0].'
-                                                </div>
-                                                ';
+                                                echo '<img class="postmedia" src="profile_pictures/default.png">';
                                             }else{
                                                 echo
                                                 '<img class="postmedia" src="'.$img.'">';

@@ -43,3 +43,11 @@ textarea {
 body {
     overflow-x: hidden !important;
 }
+.postmedia{
+    height: 32px;
+    width: 32px;
+    border-radius: 1px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}

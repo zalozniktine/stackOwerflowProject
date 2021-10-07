@@ -222,7 +222,7 @@ $id = $_GET['id'];
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
                                 <div class="width">
-                                    <h3 style="margin-top:10px; border-bottom: black 1px solid; padding-bottom:10px; margin-left:0px"
+                                    <h3 style="margin-top:10px; border-bottom: grey 0.5px solid; padding-bottom:10px; margin-left:0px"
                                         class="u-text u-text-default u-text-4">
                                         <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
@@ -253,7 +253,7 @@ $id = $_GET['id'];
                                     
                                     echo 
                                         '<tr>'
-                                        .'<td>Stevilo odgovorov: '.$count.'</td>'
+                                        .'<td>Stevilo odgovorov: '.$count.'<hr style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
                                         .'</tr> ';
                                     //$display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
@@ -282,18 +282,63 @@ $id = $_GET['id'];
                                         '<tr>'
                                         .'<td>
                                         
-                                        <span style="padding-right:40px">
-                                        <table style="float:left">
-                                        </tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>
-                                        </tr><td style="text-align:center">'.$display.'</td></tr>
-                                        </tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>
+                                        <div style="width:100%; padding-top:30px">
+                                        <table style="float:left; padding-right:30px">
+                                        <tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>
+                                        <tr><td style="text-align:center">'.$display.'</td></tr>
+                                        <tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>
                                         </table>
                                         <form id="'.$tog.'" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
                                         <form id="'.$dog.'" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
-                                        </span>
+                                        
                                         '.$answer['odgovor']
                                         .'</td>'
-                                        .'</tr> '; ?>
+                                        .'</tr> </div>'; ?>
+                                    <tr style="float:right">
+                                        <td colspan="2">
+                                            <div>
+                                                <table>
+                                                    <?php
+                                                    $stmt4 = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                                    $stmt4->execute([$answer['uporabnik_id']]);
+                                                    $user = $stmt4->fetch();
+                                                    $username = $user['username'];
+                                                    $img = $user['image'];
+
+                                                $datum = date("M j, g:i a", strtotime($answer['datum_objave']));
+
+                                                echo 
+                                                '<tr><td colspan="2" style="padding-top:20px">'
+                                                .'Answered '.$datum.''
+                                                .'</td></tr>'
+                                                .'<tr><td style="width:33px">';
+                                                if (empty($img)){
+                                                    echo '<img class="postmedia" src="profile_pictures/default.png">';
+                                                }else{
+                                                    echo
+                                                    '<img class="postmedia" src="'.$img.'">';
+                                                }
+                                                echo
+                                                '</td>'
+                                                .'<td style="text-align:left">'
+                                                .'&nbsp&nbsp'.$username
+                                                .'</td>'
+                                                .'</tr>';
+                                                
+                                                ?>
+                                                </table>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-bottom:1px solid rgb(211, 211, 211);"></td>
+                                    </tr>
+
+
+
+
+
                                     <script>
                                     function myFunction(val) {
                                         //document.getElementById("comment").submit();
@@ -314,20 +359,31 @@ $id = $_GET['id'];
                                     $query3 = "SELECT * FROM komentarji WHERE odgovor_id=?";
                                         $stmt3 = $pdo->prepare($query3);
                                         $stmt3->execute([$answer['id']]);
+                                        
                                         while ($comment = $stmt3->fetch(PDO::FETCH_ASSOC)) {
+                                            $datum_comment = date("M j, g:i a", strtotime($comment['datum_objave']));
+                                            $stmtc = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                            $stmtc->execute([$comment['uporabnik_id']]);
+                                            $upo = $stmtc->fetch();
+                                            $user_comment = $upo['username'];
                                             echo
-                                        '<tr>'
-                                        //.'<td></td>'
-                                        .'<td style="padding-left:50px" class="celica">'.$comment['komentar'].'</td>'
-                                        .'</tr> ';
+                                        //'<table style="width:90%; font-size:13px">'
+                                        '<tr style="font-size:13px ">'
+                                        .'<td style="border-bottom:solid 0.5px rgba(211, 211, 211, .6); padding-left:50px" class="celica">'.$comment['komentar'].
+                                        '<span style="color:blue">&nbsp-&nbsp'.$user_comment.'</span>&nbsp<span style="color:#989898">'.$datum_comment.'</span>
+                                        
+                                        </td>'
+                                        .'</tr> 
+                                        ';
                                         }
                                         echo
                                         '<tr>'
-                                        .'<td ><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
+                                        .'<td style="padding-bottom: 10px; border-bottom:grey solid 0.5px" ><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
                                         .'</tr>'
-                                        .'<tr>'
                                         .'<td>
+
                                         <form id="'.$answer['id'].'" style="display:none" action="comment_insert.php" method="post">
+                                        <input type="hidden" name="question_id" value="'.$id.'">
                                         <table>
                                         <tr>
                                         <td><textarea  style="font-size:12px;" name="comment" id="" cols="70" rows="2"></textarea></td>
@@ -335,12 +391,11 @@ $id = $_GET['id'];
                                         <tr>
                                         <td>
                                         <input type="hidden" name="answer_id" value='.$answer['id'].'>
-                                        <input style="font-size:12px; float:right" type="submit" value="Submit"></td>
+                                        <input style="font-size:12px; float:right" type="submit" value="Submit">
+                                        </td>
                                         </tr>
                                         </table>
-                                        </form>
-                                        </td>'
-                                        .'</tr>';
+                                        </form>';
                                     }
                                 ?>
                                 </table>
@@ -367,21 +422,9 @@ $id = $_GET['id'];
 
     <footer class="hide u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click
-                again or double click to start editing the text.</p>
+
         </div>
     </footer>
-    <section class="hide u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Template</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-            <span>HTML Builder</span>
-        </a>.
-    </section>
 </body>
 
 </html>
