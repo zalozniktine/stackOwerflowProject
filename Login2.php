@@ -3,6 +3,8 @@
 <?php include "google_login/login.php" ; ?>
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta name="keywords" content="" />
@@ -123,7 +125,7 @@
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <a href="https://nicepage.com" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
+            <a href="index.php" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1" />
             </a>
@@ -205,12 +207,7 @@
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
                         <li class="u-nav-item">
-                            <a class="
-                    u-button-style
-                    u-nav-link
-                    u-text-active-palette-1-base
-                    u-text-hover-palette-2-base
-                  " style="padding: 10px 20px">User</a>
+                            <?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>
@@ -273,7 +270,7 @@ u-btn-1
                         </path>
                     </svg><img /></span>&nbsp;Log in with Google
             </a>
-            <a href="https://nicepage.com/website-templates" class="
+            <a href="index.php" class="
             u-border-1
             u-border-black
             u-btn
@@ -329,13 +326,13 @@ u-btn-1
         </div>
     </footer>
     <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+        <a class="u-link" href="index.php" target="_blank">
             <span>HTML Templates</span>
         </a>
         <p class="u-text">
             <span>created with</span>
         </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
+        <a class="u-link" href="index.php" target="_blank">
             <span>HTML Designer</span> </a>.
     </section>
 </body>

@@ -1,7 +1,17 @@
+<?php
+include 'session.php';
+if(isset($user_id)){
+    header("location:index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html style="font-size: 16px">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta name="keywords" content="" />
@@ -122,7 +132,7 @@
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <a href="https://nicepage.com" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
+            <a href="index.php" class="u-hidden-xs u-image u-logo u-image-1" data-image-width="1200"
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1" />
             </a>
@@ -204,12 +214,7 @@
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
                         <li class="u-nav-item">
-                            <a class="
-                    u-button-style
-                    u-nav-link
-                    u-text-active-palette-1-base
-                    u-text-hover-palette-2-base
-                  " style="padding: 10px 20px">User</a>
+                            <?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>
@@ -229,7 +234,7 @@
                     u-align-center u-nav u-popupmenu-items u-unstyled u-nav-4
                   ">
                                 <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" style="padding: 10px 20px">User</a>
+                                    <a class="u-button-style u-nav-link" style="padding: 10px 20px">Userr</a>
                                 </li>
                             </ul>
                         </div>

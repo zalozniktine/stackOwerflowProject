@@ -8,6 +8,8 @@ $id = $_GET['id'];
 <html style="font-size: 16px;">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -174,10 +176,7 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a style="position:relative; top:7px;" href="profile.php"
-                                class="u-button-style u-na v-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="margin-top: 100px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
-                            </a>
+                        <li class="u-nav-item"><?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>

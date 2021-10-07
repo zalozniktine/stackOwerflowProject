@@ -6,6 +6,11 @@ include 'povezava.php';
 <html style="font-size: 16px;">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -30,10 +35,12 @@ include 'povezava.php';
         "logo": "images/1200px-Stack_Overflow_logo.svg.png"
     }
     </script>
+
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
     <link rel="canonical" href="/">
+
 </head>
 
 <body data-home-page="https://stackowerflow.nicepage.io/Home.html?version=2d41e077-21ae-4b91-b81d-c58cb51ca37a"
@@ -168,15 +175,12 @@ include 'povezava.php';
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a href="profile.php"
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){
-                                    echo $_SESSION['user_name'];
-                                } ?>
-                            </a>
+                        <li class="u-nav-item">
+                            <?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>
+
                 <div class="u-custom-menu u-nav-container-collapse">
                     <div
                         class="u-align-center u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
