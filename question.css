@@ -8,6 +8,14 @@
     background: url("images/downS.png") no-repeat;
     display: inline-block;
 }
+
+.arrowdo {
+    background-size: contain;
+    width: 30px;
+    height: 15px;
+    background: url("images/downo.png") no-repeat;
+    display: inline-block;
+}
 .arrow1:hover {
     background: url("images/up2.png") no-repeat;
 }
@@ -17,6 +25,17 @@
     height: 15px;
     background: url("images/upS.png") no-repeat;
     display: inline-block;
+}
+
+.arrowo {
+    background-size: contain;
+    width: 30px;
+    height: 15px;
+    background: url("images/upo.png") no-repeat;
+    display: inline-block;
+}
+.disabled{
+    pointer-events: none;
 }
 
 textarea {

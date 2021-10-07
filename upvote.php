@@ -20,10 +20,11 @@ $odgovor = '';
 $stmt = $pdo->query('SELECT * FROM lajki');
 while ($row = $stmt->fetch())
 {
+    //to preveri ce je uporabnik na istem odgovoru downotu ze
     if ($row['Value'] == $l and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
         echo $value = 0;
     }
-    //to preveri ce je uporabnik na istem odgovoru downotu ze
+    
     if ($row['Value'] == -1 and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
         echo $value = 1;
         $uporabnik = $row['uporabnik_id'];

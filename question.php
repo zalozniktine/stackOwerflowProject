@@ -302,6 +302,11 @@ $id = $_GET['id'];
                                         $stmt4 ->execute([$answer['id']]);
                                         while ($like = $stmt4->fetch(PDO::FETCH_ASSOC)) {
                                             $display += $like['Value'];
+                                            $value = $like['Value'];
+                                            $likeU = $like['uporabnik_id'];
+                                            $likeO = $like['odgovor_id'];
+
+                                            
                                         }
                                         ?>
 
@@ -322,9 +327,22 @@ $id = $_GET['id'];
                                         
                                         <div style="width:100%; padding-top:30px">
                                         <table style="float:left; padding-right:30px">
-                                        <tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>
-                                        <tr><td style="text-align:center">'.$display.'</td></tr>
-                                        <tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>
+                                        ';
+                                        if (!isset($value)){
+                                            $value = 3;
+                                        }
+                                        if($value== '1' and $likeU==$user_id and $likeO==$answer['id']){
+                                            echo '<tr><td><a class="disabled" onclick="upvote('.$tog1.')" href="#"><div class="arrowo"></div></a></td></tr>';
+                                        }else{
+                                            echo '<tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>';
+                                        }
+                                        echo '<tr><td style="text-align:center">'.$display.'</td></tr>';
+                                        if($value== '-1' and $likeU==$user_id and $likeO==$answer['id']){
+                                            echo '<tr><td><a class="disabled" onclick="downvote('.$dog2.')" href="#"><div class="arrowdo"></div></a></td></tr>';
+                                        }else{
+                                            echo '<tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>';
+                                        }
+                                        echo'
                                         </table>
                                         <form id="'.$tog.'" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
                                         <form id="'.$dog.'" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
