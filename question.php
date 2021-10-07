@@ -222,7 +222,8 @@ $id = $_GET['id'];
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
                                 <div class="width">
-                                    <h3 style="margin-top:10px; border-bottom: grey 0.5px solid; padding-bottom:10px; margin-left:0px"
+                                    <h3 class="width"
+                                        style="margin-top:10px; border-bottom: grey 0.5px solid; padding-bottom:10px; margin-left:0px"
                                         class="u-text u-text-default u-text-4">
                                         <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
@@ -256,7 +257,7 @@ $id = $_GET['id'];
                                 </div>
 
 
-                                <table>
+                                <table class="width">
                                     <tr>
                                         <td>
                                             <div style="position:relative; float:right">
@@ -290,7 +291,7 @@ $id = $_GET['id'];
                                     
                                     echo 
                                         '<tr>'
-                                        .'<td>Answers: '.$count.'<hr style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
+                                        .'<td class="width">Answers: '.$count.'<hr  style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
                                         .'</tr> ';
                                     //$display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
