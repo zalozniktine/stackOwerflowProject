@@ -234,17 +234,54 @@ $id = $_GET['id'];
                                     ?>
                                     </h3>
                                 </div>
-                                <p class="width">
-                                    <?php
+                                <div class="width">
+                                    <p>
+                                        <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
                                         $stmt = $pdo->prepare($query);
                                         $stmt->execute([$id]);
                                         $question = $stmt->fetch();
+                                        $question_date = date("M j, g:i a", strtotime($question['datum_objave']));
+
+                                        $stmtv = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                        $stmtv->execute([$question['uporabnik_id']]);
+                                        $userqe = $stmtv->fetch();
+                                        $username4 = $userqe['username'];
+                                        $img4 = $userqe['image'];
+
                                         echo $question['Opis'];
                                     ?>
-                                </p>
+                                    </p>
+
+                                </div>
+
 
                                 <table>
+                                    <tr>
+                                        <td>
+                                            <div style="position:relative; float:right">
+                                                <table>
+                                                    <tr>
+                                                        <td colspan="2">Asked <?php echo $question_date;?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:33px">
+                                                            <?php
+                                                            if (empty($img4)){
+                                                                echo '<img class="postmedia" src="profile_pictures/default.png">';
+                                                            }else{
+                                                                echo
+                                                                '<img class="postmedia" src="'.$img4.'">';
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td style="text-align:left">&nbsp&nbsp<?php echo $username4 ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php
                                     $query2 = "SELECT * FROM odgovori WHERE vprasanje_id=?";
                                     $stmt2 = $pdo->prepare($query2);
@@ -253,7 +290,7 @@ $id = $_GET['id'];
                                     
                                     echo 
                                         '<tr>'
-                                        .'<td>Stevilo odgovorov: '.$count.'<hr style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
+                                        .'<td>Answers: '.$count.'<hr style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
                                         .'</tr> ';
                                     //$display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
