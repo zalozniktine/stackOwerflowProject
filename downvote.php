@@ -22,6 +22,8 @@ while ($row = $stmt->fetch())
 {
     if ($row['Value'] == $l and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
         $value = 0;
+        $uporabnik = $row['uporabnik_id'];
+        $odgovor = $row['odgovor_id'];
     }
     if ($row['Value'] == 1 and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
         $value = 1;
@@ -30,12 +32,20 @@ while ($row = $stmt->fetch())
     }
 }
 
+
 if ($value == 1){
     $stmt2 = $pdo->prepare('UPDATE lajki SET Value = ? WHERE uporabnik_id=? AND odgovor_id=?');
     $stmt2->execute([-1, $uporabnik, $odgovor]);
     header("Location: question.php?id=$qid");
+    $uporabnik;
+    $odgovor;
 }else if ($value == 0) {
-    echo "taki vnos je ze";
+    $stmt4 = $pdo->prepare('DELETE FROM lajki WHERE uporabnik_id=? AND odgovor_id=?');
+
+    $stmt4->execute([$uporabnik, $odgovor]);
+    header("Location: question.php?id=$qid");
+
+
 }else{
     $query = 'INSERT INTO lajki (Value,uporabnik_id,odgovor_id) VALUES (?,?,?)';
     $pdo->prepare($query)->execute([$l, $user, $id]);

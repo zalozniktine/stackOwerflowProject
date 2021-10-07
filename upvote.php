@@ -23,6 +23,8 @@ while ($row = $stmt->fetch())
     //to preveri ce je uporabnik na istem odgovoru downotu ze
     if ($row['Value'] == $l and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
         echo $value = 0;
+        $uporabnik = $row['uporabnik_id'];
+        $odgovor = $row['odgovor_id'];
     }
     
     if ($row['Value'] == -1 and $row['uporabnik_id'] == $user and  $row['odgovor_id'] == $id){
@@ -37,7 +39,9 @@ if ($value == 1){
     $stmt2->execute([1, $uporabnik, $odgovor]);
     header("Location: question.php?id=$qid");
 }else if ($value == 0) {
-    echo "taki vnos je ze";
+    $stmt4 = $pdo->prepare('DELETE FROM lajki WHERE uporabnik_id=? AND odgovor_id=?');
+    $stmt4->execute([$uporabnik, $odgovor]);
+    header("Location: question.php?id=$qid");
     
 }else{
     $query = 'INSERT INTO lajki (Value,uporabnik_id,odgovor_id) VALUES (?,?,?)';

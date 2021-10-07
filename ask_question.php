@@ -1,5 +1,9 @@
 <?php
-session_start();
+include 'session.php';
+if(!isset($user_id)){
+    header("location:login2.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
@@ -164,7 +168,7 @@ session_start();
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 style="padding: 10px 20px;">
-                                <?php include 'loginDisplay.php'?>
+                                <a href="profile.php"><?php include 'loginDisplay.php'?></a>
                             </a>
                         </li>
                     </ul>

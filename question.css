@@ -34,9 +34,7 @@
     background: url("images/upo.png") no-repeat;
     display: inline-block;
 }
-.disabled{
-    pointer-events: none;
-}
+
 
 textarea {
     width:90%;

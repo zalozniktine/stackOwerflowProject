@@ -331,15 +331,15 @@ $id = $_GET['id'];
                                             $value = 3;
                                         }
                                         if($value== '1' and $likeU==$user_id and $likeO==$answer['id']){
-                                            echo '<tr><td><a class="disabled" onclick="upvote('.$tog1.')" href="#"><div class="arrowo"></div></a></td></tr>';
+                                            echo '<tr><td style="padding-right:30px" ><a class="disabled" onclick="upvote('.$tog1.')" href="#"><div class="arrowo"></div></a></td></tr>';
                                         }else{
-                                            echo '<tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>';
+                                            echo '<tr><td style="padding-right:30px" ><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>';
                                         }
-                                        echo '<tr><td style="text-align:center">'.$display.'</td></tr>';
+                                        echo '<tr><td style="text-align:center; padding-right:30px;">'.$display.'</td></tr>';;
                                         if($value== '-1' and $likeU==$user_id and $likeO==$answer['id']){
-                                            echo '<tr><td><a class="disabled" onclick="downvote('.$dog2.')" href="#"><div class="arrowdo"></div></a></td></tr>';
+                                            echo '<tr><td style="padding-right:30px" ><a class="disabled" onclick="downvote('.$dog2.')" href="#"><div class="arrowdo"></div></a></td></tr>';
                                         }else{
-                                            echo '<tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>';
+                                            echo '<tr><td style="padding-right:30px" ><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>';
                                         }
                                         echo'
                                         </table>
