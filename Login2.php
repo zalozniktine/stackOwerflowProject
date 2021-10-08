@@ -13,6 +13,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="nicepage.css" media="screen" />
     <link rel="stylesheet" href="Register.css" media="screen" />
+    <link rel="stylesheet" href="Login.css" media="screen" />
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com" />
@@ -242,10 +243,11 @@
             <img class="u-image u-image-default u-preserve-proportions u-image-1"
                 src="images/1200px-Stack_Overflow_logo.svg-Copy.png" alt="" data-image-width="201"
                 data-image-height="236" />
+
             <a href="<?php echo $client->createAuthUrl(); ?>" class="
-login-btn
-u-active-palette-5-light-1
-u-border-1
+                        login-btn
+                        u-active-palette-5-light-1
+                        u-border-1
 u-border-grey-90
 u-btn
 u-btn-round
@@ -268,72 +270,45 @@ u-btn-1
                         <path style="fill: #f14336"
                             d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012  c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0  C318.115,0,375.068,22.126,419.404,58.936z">
                         </path>
-                    </svg><img /></span>&nbsp;Log in with Google
+                    </svg><img /></span>&nbsp;Continue with with Google
             </a>
-            <a href="index.php" class="
-            u-border-1
-            u-border-black
-            u-btn
-            u-btn-round
-            u-button-style
-            u-custom-color-1
-            u-hover-custom-color-2
-            u-radius-6
-            u-btn-2
-          "><span class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 24 24"
-                        style="width: 1em; height: 1em">
-                        <path
-                            d="m21 0h-18c-1.655 0-3 1.345-3 3v18c0 1.654 1.345 3 3 3h18c1.654 0 3-1.346 3-3v-18c0-1.655-1.346-3-3-3z"
-                            fill="currentColor"></path>
-                        <path
-                            d="m16.5 12v-3c0-.828.672-.75 1.5-.75h1.5v-3.75h-3c-2.486 0-4.5 2.014-4.5 4.5v3h-3v3.75h3v8.25h4.5v-8.25h2.25l1.5-3.75z"
-                            fill="#fff"></path>
-                    </svg><img /></span>&nbsp;Log in with Facebook
-            </a>
-            <table class="formRegister">
-                <form action="login_check.php" method="post">
-                    <td><label>Email</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="email" type="email" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Password</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="pass" type="password" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input value="Login" type="submit">
-                        </td>
-                    </tr>
-                </form>
-            </table>
+
+            <div style="padding:10px 10px 10px 10px" class="fb-login-button center" data-width="" data-size="large"
+                data-button-type="continue_with" data-layout="default" data-auto-logout-link="false"
+                data-use-continue-as="false"></div>
+
+
+            <?php include 'facebook_login.php' ?>
+            <div class="center">
+                <table>
+                    <form action="login_check.php" method="post">
+                        <td><label>Email</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="email" type="email" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="pass" type="password" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input value="Login" type="submit">
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
         </div>
     </section>
 
-    <div class="formRegister">
-
-    </div>
-
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">
-                Sample text. Click to select the text box. Click again or double click
-                to start editing the text.
-            </p>
         </div>
     </footer>
     <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="index.php" target="_blank">
-            <span>HTML Templates</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="index.php" target="_blank">
-            <span>HTML Designer</span> </a>.
     </section>
 </body>
 

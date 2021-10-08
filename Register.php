@@ -4,7 +4,9 @@ if(isset($user_id)){
     header("location:index.php");
     exit;
 }
+
 ?>
+<?php include "google_login/login.php" ; ?>
 
 <!DOCTYPE html>
 <html style="font-size: 16px">
@@ -249,18 +251,19 @@ if(isset($user_id)){
             <img class="u-image u-image-default u-preserve-proportions u-image-1"
                 src="images/1200px-Stack_Overflow_logo.svg-Copy.png" alt="" data-image-width="201"
                 data-image-height="236" />
-            <a href="https://nicepage.com/landing-page" class="
-            u-active-palette-5-light-1
-            u-border-1
-            u-border-grey-90
-            u-btn
-            u-btn-round
-            u-button-style
-            u-grey-5
-            u-hover-palette-5-light-2
-            u-radius-6
-            u-btn-1
-          "><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px"
+            <a href="<?php echo $client->createAuthUrl(); ?>" class="
+                        login-btn
+                        u-active-palette-5-light-1
+                        u-border-1
+u-border-grey-90
+u-btn
+u-btn-round
+u-button-style
+u-grey-5
+u-hover-palette-5-light-2
+u-radius-6
+u-btn-1
+"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px"
                         style="width: 1em; height: 1em">
                         <path style="fill: #fbbb00"
                             d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256  c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456  C103.821,274.792,107.225,292.797,113.47,309.408z">
@@ -274,61 +277,51 @@ if(isset($user_id)){
                         <path style="fill: #f14336"
                             d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012  c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0  C318.115,0,375.068,22.126,419.404,58.936z">
                         </path>
-                    </svg><img /></span>&nbsp;Sign up with Google
+                    </svg><img /></span>&nbsp;Continue with with Google
             </a>
-            <a href="https://nicepage.com/website-templates" class="
-            u-border-1
-            u-border-black
-            u-btn
-            u-btn-round
-            u-button-style
-            u-custom-color-1
-            u-hover-custom-color-2
-            u-radius-6
-            u-btn-2
-          "><span class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 24 24"
-                        style="width: 1em; height: 1em">
-                        <path
-                            d="m21 0h-18c-1.655 0-3 1.345-3 3v18c0 1.654 1.345 3 3 3h18c1.654 0 3-1.346 3-3v-18c0-1.655-1.346-3-3-3z"
-                            fill="currentColor"></path>
-                        <path
-                            d="m16.5 12v-3c0-.828.672-.75 1.5-.75h1.5v-3.75h-3c-2.486 0-4.5 2.014-4.5 4.5v3h-3v3.75h3v8.25h4.5v-8.25h2.25l1.5-3.75z"
-                            fill="#fff"></path>
-                    </svg><img /></span>&nbsp;Sign up with Facebook
-            </a>
-            <table class="formRegister">
-                <form action="user_insert.php" method="post">
-                    <tr>
-                        <td><label>Username</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name='username' type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Email</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="email" type="email" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Password</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="password" type="password" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Repeat password</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="password2" type="password" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input value="Sign up" type="submit">
-                        </td>
-                    </tr>
-                </form>
-            </table>
+
+            <div style="padding:10px 10px 10px 10px" class="fb-login-button center" data-width="" data-size="large"
+                data-button-type="continue_with" data-layout="default" data-auto-logout-link="false"
+                data-use-continue-as="false"></div>
+
+
+            <?php include 'facebook_login.php' ?>
+            <div class="center">
+                <table class="formRegister">
+                    <form action="user_insert.php" method="post">
+                        <tr>
+                            <td><label>Username</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name='username' type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Email</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="email" type="email" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="password" type="password" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Repeat password</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="password2" type="password" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input value="Sign up" type="submit">
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+
         </div>
     </section>
 

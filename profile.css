@@ -9,7 +9,19 @@
 .left{
     float: left;
 }
+.button:hover{
+    color: #ffffff;
+    background-color: #df0202;
+}
+.button {
+    font: 15px Arial;
+    text-decoration: none;
+    background-color: #ff0606;
+    color: #ffffff;
+    padding: 10px 16.5px 10px 16.5px;
 
+    border-radius: 3px;
+  }
 
 /*.change:hover{
     background-color: #404040 !important;

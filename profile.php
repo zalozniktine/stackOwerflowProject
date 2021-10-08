@@ -313,6 +313,9 @@ if (!isset($_SESSION['user_id'])){
                                         <button type="submit" name="ssubmit" class="btn btn-primary mb-3">Save
                                             profile</button>
                                     </div>
+                                    <div class="col-auto">
+                                        <a href="logout.php" name="" class="button">Logout</a>
+                                    </div>
                                     <!---<input type="submit" name="ssubmit">-->
                                 </div>
                                 </form>

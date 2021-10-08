@@ -1,6 +1,3 @@
-.formRegister{
-  left: 475px;
-}
 
 @media only screen and (max-width: 768px) {
   .formRegister{
@@ -44,4 +41,10 @@
 
 .u-section-1 .u-icon-2 {
   color: rgb(59, 89, 153) !important;
+}
+
+.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: table !important;
 }

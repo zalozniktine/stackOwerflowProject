@@ -1,0 +1,33 @@
+<table class="formRegister">
+                <form action="user_insert.php" method="post">
+                    <tr>
+                        <td><label>Username</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name='username' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name="email" type="email" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name="password" type="password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Repeat password</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name="password2" type="password" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input value="Sign up" type="submit">
+                        </td>
+                    </tr>
+                </form>
+            </table>
