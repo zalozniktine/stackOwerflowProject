@@ -1,0 +1,13 @@
+.width{
+    width: 100%;
+    word-wrap: break-word;
+}
+.link{
+    border:none;
+    background: none;
+    color: red;
+    float: right;
+    border-radius: none;
+    margin: 0px;
+    padding: 0px;
+}

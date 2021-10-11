@@ -16,6 +16,7 @@ if (!empty($email) && !empty($pass)) {
         if (password_verify($pass, $user['pass'])) {
             $_SESSION['user_id'] = $user['id'];  
             $_SESSION['user_name'] = $user['username'];
+            $_SESSION['image'] = $user['image'];
             //$_SESSION['admin'] = $user['admin'];        
             header("Location: index.php");
             echo 'uspesna prijava';

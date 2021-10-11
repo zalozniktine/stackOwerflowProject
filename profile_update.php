@@ -56,6 +56,7 @@ if (isset($_POST['ssubmit'])) {
             $query = "UPDATE uporabniki SET image=? WHERE id=?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$target_file,$user_id]);
+            $_SESSION['image']=$target_file;
 
             //header("Location: edit-profile.php");
             die();

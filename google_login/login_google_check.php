@@ -54,6 +54,7 @@ if(isset($_GET['code'])):
             //echo $id;
             $_SESSION['user_id'] = $google_id['id'];
             $_SESSION['user_name'] = $google_id['username']; 
+            $_SESSION['image'] = $google_id['image'];
             header('Location: ../profile.php');
             exit;
         }else{
@@ -82,6 +83,7 @@ if(isset($_GET['code'])):
             $user = $google->fetch();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['username'];
+            $_SESSION['image'] = $user['image'];
             //echo /*$_SESSION['user_id'] = */$user;
             echo 'vneslo novega userja';
             header('location:../index.php');

@@ -165,11 +165,8 @@ if(!isset($user_id)){
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;">
-                                <a href="profile.php"><?php include 'loginDisplay.php'?></a>
-                            </a>
+                        <li class="u-nav-item">
+                            <?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>

@@ -26,6 +26,7 @@ if (!isset($_SESSION['user_id'])){
     <title>Home</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Home.css" media="screen">
+    <link rel="stylesheet" href="activity.css">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com">
@@ -307,7 +308,7 @@ if (!isset($_SESSION['user_id'])){
                                     document.getElementById('komentarji').style.display = "inline";
                                 }
                                 </script>
-                                <div id="vprasanja">
+                                <div class="width" id="vprasanja">
                                     <h4>Your questions:</h4>
                                     <?php
 
@@ -316,33 +317,48 @@ if (!isset($_SESSION['user_id'])){
                                     echo '<ul class="list-group list-group-flush">';
                                     while ($user = $stmt->fetch()) {
                                         echo
-                                        '<li class="list-group-item"><a href="question.php?id='.$user['id'].'">'.$user['Naslov'].'</a></li>';
+                                        '<li class="list-group-item"><a href="question.php?id='.$user['id'].'">'.$user['Naslov'].'</a>
+                                        <form action="con_delete.php" method="post">
+                                        <input type="hidden" name="type" value="question"/>
+                                        <input type="hidden" name="id" value="'.$user['id'].'"/>
+                                        <input class="link" value="delete" type="submit"/> </form>
+                                        </li>';
                                         }
                                     echo '</ul>';
                                     ?>
                                 </div>
-                                <div id="odgovori">
+                                <div class="width" id="odgovori">
                                     <h4>Your answers:</h4>
                                     <?php
-                                    $stmt2 = $pdo->prepare('SELECT v.id AS id, o.odgovor AS Naslov FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id WHERE o.uporabnik_id=?');
+                                    $stmt2 = $pdo->prepare('SELECT v.id AS id, o.odgovor AS Naslov, o.id AS aid FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id WHERE o.uporabnik_id=?');
                                     $stmt2->execute([$user_id]);
                                     echo '<ul class="list-group list-group-flush">';
                                     while ($row2 = $stmt2->fetch()) {
                                         echo
-                                        '<li class="list-group-item"><a href="question.php?id='.$row2['id'].'">'.$row2['Naslov'].'</a></li>';
+                                        '<li class="list-group-item"><a href="question.php?id='.$row2['id'].'">'.$row2['Naslov'].'</a>
+                                        <form action="con_delete.php" method="post">
+                                        <input type="hidden" name="type" value="answer"/>
+                                        <input type="hidden" name="id" value="'.$row2['aid'].'"/>
+                                        <input class="link" value="delete" type="submit"/> </form>
+                                        </li>';
                                         }
                                     echo '</ul>';
                                     ?>
                                 </div>
-                                <div id="komentarji">
+                                <div class="width" id="komentarji">
                                     <h4>Your Comments:</h4>
                                     <?php
-                                    $stmt3 = $pdo->prepare('SELECT v.id AS id, k.komentar AS Naslov FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id INNER JOIN komentarji k ON k.odgovor_id=o.id WHERE k.uporabnik_id=?');
+                                    $stmt3 = $pdo->prepare('SELECT v.id AS id, k.komentar AS Naslov, k.id AS kid FROM vprasanja v INNER JOIN odgovori o ON o.vprasanje_id=v.id INNER JOIN komentarji k ON k.odgovor_id=o.id WHERE k.uporabnik_id=?');
                                     $stmt3->execute([$user_id]);
                                     echo '<ul class="list-group list-group-flush">';
                                     while ($row3 = $stmt3->fetch()) {
                                         echo
-                                        '<li class="list-group-item"><a href="question.php?id='.$row3['id'].'">'.$row3['Naslov'].'</a></li>';
+                                        '<li class="list-group-item"><a href="question.php?id='.$row3['id'].'">'.$row3['Naslov'].'</a>
+                                        <form action="con_delete.php" method="post">
+                                        <input type="hidden" name="type" value="comment"/>
+                                        <input type="hidden" name="id" value="'.$row3['kid'].'"/>
+                                        <input class="link" value="delete" type="submit"/> </form>
+                                        </li>';
                                         }
                                     echo '</ul>';
                                     ?>
