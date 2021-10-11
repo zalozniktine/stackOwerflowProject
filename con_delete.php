@@ -2,6 +2,11 @@
 require 'povezava.php';
 include 'session.php';
 
+if(!isset($user_id)){
+    header("location:login2.php");
+    exit;
+}
+
 $type = $_POST['type'];
 $id = $_POST['id'];
 

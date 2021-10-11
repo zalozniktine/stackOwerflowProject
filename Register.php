@@ -82,20 +82,11 @@ if(isset($user_id)){
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled">
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">My account</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Questions</a>
                         </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Questions</a>
-                        </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Tags</a>
-                        </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Users</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -113,20 +104,12 @@ if(isset($user_id)){
                             <ul class="
                     u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2
                   ">
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">My account</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="index.php">Questions</a>
                                 </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Questions</a>
-                                </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Tags</a>
-                                </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Users</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
                                 </li>
                             </ul>
                         </div>
@@ -323,29 +306,6 @@ u-btn-1
             </div>
 
         </div>
-    </section>
-
-    <div class="formRegister">
-
-    </div>
-
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">
-                Sample text. Click to select the text box. Click again or double click
-                to start editing the text.
-            </p>
-        </div>
-    </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Templates</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-            <span>HTML Designer</span> </a>.
     </section>
 </body>
 

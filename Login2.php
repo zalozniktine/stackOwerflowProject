@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html style="font-size: 16px">
-<?php include "google_login/login.php" ; ?>
+<?php include "google_login/login.php" ;
+include 'session.php';
+if (isset($_SESSION['user_id'])){
+    header("location:index.php");
+    die();
+}
+
+?>
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -74,20 +81,11 @@
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled">
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">My account</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Questions</a>
                         </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Questions</a>
-                        </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Tags</a>
-                        </li>
-                        <li class="u-nav-item">
-                            <a class="u-button-style u-nav-link">Users</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="register.php">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -105,20 +103,13 @@
                             <ul class="
                     u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2
                   ">
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">My account</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="index.php">Questions</a>
                                 </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Questions</a>
-                                </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Tags</a>
-                                </li>
-                                <li class="u-nav-item">
-                                    <a class="u-button-style u-nav-link">Users</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="register.php">Register</a>
                                 </li>
                             </ul>
                         </div>

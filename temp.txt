@@ -1,33 +1,32 @@
-<table class="formRegister">
-                <form action="user_insert.php" method="post">
-                    <tr>
-                        <td><label>Username</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name='username' type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Email</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="email" type="email" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Password</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="password" type="password" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Repeat password</label></td>
-                    </tr>
-                    <tr>
-                        <td><input name="password2" type="password" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input value="Sign up" type="submit">
-                        </td>
-                    </tr>
-                </form>
-            </table>
+<form action="vprasanje_insert.php" method="post">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>Ask a public question</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Title</b></td>
+                            </tr>
+                            <tr>
+                                <td><input name="naslov" style="width: 100%;" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><br><b>Body</b></td>
+                            </tr>
+                            <tr>
+                                <td><textarea rows="10" cols="50" name="opis" style="width: 100%;" name="Description"
+                                        id="Description"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><br><b>Tags</b></td>
+                            </tr>
+                            <tr>
+                                <td><input name="tags" style="width: 700px;" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><br><input style="float: right;" value="Poslji vprasanje" type="submit"></td>
+                            </tr>
+                        </table>
+                    </form>

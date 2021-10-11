@@ -71,16 +71,20 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled">
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My account</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Questions</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
-                        </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
-                        </li>
+                        <?php
+                        if (!isset($_SESSION['user_id'])){
+                            echo '<li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="register.php">Register</a>
+                                </li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="u-custom-menu u-nav-container-collapse">
@@ -88,16 +92,22 @@ $id = $_GET['id'];
                         <div class="u-sidenav-overflow">
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My
+                                        account</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="index.php">Questions</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
+                                <?php
+                        if (!isset($_SESSION['user_id'])){
+                            echo '<li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
-                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="register.php">Register</a>
+                                </li>';
+                        }
+                        ?>
                             </ul>
                         </div>
                     </div>
@@ -209,9 +219,9 @@ $id = $_GET['id'];
                                 <p class="u-hidden-xs u-text u-text-default u-text-2">PUBLIC</p>
                                 <ul
                                     class="levo u-hidden-xs u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-3">
-                                    <li>Questions</li>
-                                    <li>Tags</li>
-                                    <li>Users</li>
+                                    <li><a href="index.php">Questions</a></li>
+                                    <li><a href="profile.php">My profile</a></li>
+                                    <li><a href="activity.php">My activity</a></li>
                                 </ul>
                                 <img class="u-hidden-lg u-hidden-md u-hidden-sm u-hidden-xl u-image u-image-default u-preserve-proportions u-image-1"
                                     src="images/1200px-Stack_Overflow_logo.svg-Copy.png" alt="" data-image-width="201"

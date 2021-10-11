@@ -72,15 +72,11 @@ if (!isset($_SESSION['user_id'])){
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled">
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My account</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
-                        </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
-                        </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Questions</a>
                         </li>
                     </ul>
                 </div>
@@ -89,15 +85,13 @@ if (!isset($_SESSION['user_id'])){
                         <div class="u-sidenav-overflow">
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My
+                                        account</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
-                                </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
-                                </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="index.php">Questions</a>
                                 </li>
                             </ul>
                         </div>
