@@ -116,7 +116,8 @@ include 'povezava.php';
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1">
             </a>
-            <form action="#" method="get" class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
+            <form action="index.php" method="get"
+                class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
                 <button class="u-search-button" type="submit">
                     <span class="u-search-icon u-spacing-10 u-text-grey-40">
                         <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"
@@ -147,7 +148,7 @@ include 'povezava.php';
                         </svg>
                     </span>
                 </button>
-                <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
+                <input class="u-search-input" type="search" name="search" placeholder="Search">
             </form>
             <nav
                 class="u-align-left u-hidden-md u-hidden-sm u-hidden-xs u-menu u-menu-dropdown u-nav-spacing-25 u-offcanvas u-menu-2">
@@ -186,6 +187,7 @@ include 'povezava.php';
                     <ul class="u-nav u-unstyled u-nav-3">
                         <li class="u-nav-item">
                             <?php include 'loginD.php' ?>
+
                         </li>
                     </ul>
                 </div>
@@ -247,8 +249,44 @@ include 'povezava.php';
                                 <hr>
                                 <br>
                                 <?php
-                                include 'questions.php';
+                                //include 'questions.php';
                                 ?>
+                                <div>
+                                    <?php
+    
+    include 'povezava.php';
+            
+    if(isset($_GET['search'])){
+        $search2 = $_GET['search'];
+        $search = strtolower($search2); 
+
+        $query = ('SELECT v.Naslov AS Naslov,v.id AS id,COUNT(o.id) AS neki FROM vprasanja v left JOIN odgovori o ON o.vprasanje_id=v.id WHERE lower(Naslov) LIKE ? GROUP BY v.Naslov ');
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(["%$search%"]);
+    }else{
+        $stmt = $pdo->query('SELECT v.Naslov AS Naslov,v.id AS id,COUNT(o.id) AS neki FROM vprasanja v left JOIN odgovori o ON o.vprasanje_id=v.id GROUP BY v.Naslov');
+    }
+    
+    echo '<table  class="izpis">';
+    while ($row = $stmt->fetch()) {
+        echo
+        '<tr>'
+        .'<td style="border-bottom: 1px solid black">
+        
+        <div style="font-size:10px; font-family:Arial; color:gray; padding-right:10px">
+            <div style="text-align:center">'.$row['neki'].'</div>
+            <div>Answers</div>
+        <div>
+        
+        </td>'
+        //.'<td style="border-bottom: 1px solid black; width:600px" class="celica"><a id="myLink" href="#" onclick="myFunction();return false;">'.$row['Naslov'].'</a></td>'
+        .'<td style="border-bottom: 1px solid black; width:600px" class="celica"><a href="question.php?id='.$row['id'].'">'.$row['Naslov'].'</a></td>'
+        .'</tr>';
+    }
+    echo '</table>';
+    ?>
+
+                                </div>
                             </div>
                         </div>
                     </div>

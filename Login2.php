@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])){
     <title>Login</title>
     <link rel="stylesheet" href="nicepage.css" media="screen" />
     <link rel="stylesheet" href="Register.css" media="screen" />
-    <link rel="stylesheet" href="Login.css" media="screen" />
+    <link rel="stylesheet" href="Login.css" />
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.25.1, nicepage.com" />
@@ -264,9 +264,7 @@ u-btn-1
                     </svg><img /></span>&nbsp;Continue with with Google
             </a>
 
-            <div><a style="border: 1px solid black; padding:7px 61px 7px 61px; border-radius:4px; margin-top:10px; margin-bottom:10px; font-family:Open Sans, sans-serif;
-            font-size:15px; color:white; font-weight:700; background-color:#4267B2" class=" center"
-                    href="facebook_login.php">
+            <div><a class="fb center" href="facebook_login.php">
                     <img src="assets/icons/facebook-icon.png" alt="">
                     <span>Continue with Facebook</span>
                 </a></div>

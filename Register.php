@@ -269,7 +269,7 @@ u-btn-1
                     <img src="assets/icons/facebook-icon.png" alt="">
                     <span>Continue with Facebook</span>
                 </a></div>
-                
+
             <div class="center">
                 <table class="formRegister">
                     <form action="user_insert.php" method="post">

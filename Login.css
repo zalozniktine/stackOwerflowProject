@@ -39,3 +39,18 @@
   margin-right: auto !important;
   display: table !important;
 }
+
+.fb{
+  border: 1px solid black !important; 
+  padding:7px 61px 7px 61px !important; 
+  border-radius:4px !important; 
+  margin-top:10px !important; 
+  margin-bottom:10px !important; 
+  font-family:"Open Sans", sans-serif !important;
+  font-size:15px; color:white !important; 
+  font-weight:700 !important; 
+  background-color:#4267B2 !important;
+}
+.fb:hover{
+  background-color: #16419A !important;
+}
