@@ -121,7 +121,8 @@ if (isset($_SESSION['user_id'])){
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1" />
             </a>
-            <form action="#" method="get" class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
+            <form action="index.php" method="get"
+                class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
                 <button class="u-search-button" type="submit">
                     <span class="u-search-icon u-spacing-10 u-text-grey-40">
                         <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"
