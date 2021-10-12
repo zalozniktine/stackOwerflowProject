@@ -1,55 +1,83 @@
-<script>
-window.fbAsyncInit = function() {
-    FB.init({
-        appId: '400121251829649',
-        cookie: true,
-        xfbml: true,
-        version: 'v12.0'
-    });
+<?php
+include ('povezava.php');
+include ('session.php');
+include('config.php');
 
-    FB.AppEvents.logPageView();
+$facebook_output = '';
 
-};
+$facebook_helper = $facebook->getRedirectLoginHelper();
 
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+if(isset($_GET['code']))
+{
+ if(isset($_SESSION['access_token']))
+ {
+  $access_token = $_SESSION['access_token'];
+ }
+ else
+ {
+  $access_token = $facebook_helper->getAccessToken();
 
-<?php 
-echo '<script>FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});</script>';
-?>
+  $_SESSION['access_token'] = $access_token;
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=400121251829649&autoLogAppEvents=1"
-    nonce="VcZVwBtQ"></script>
+  $facebook->setDefaultAccessToken($_SESSION['access_token']);
+ }
 
-<!--<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default"
-    data-auto-logout-link="false" data-use-continue-as="false"></div>-->
+ $_SESSION['user_id'] = '';
+ $_SESSION['user_name'] = '';
+ $_SESSION['user_email_address'] = '';
+ $_SESSION['user_image'] = '';
+
+ $graph_response = $facebook->get("/me?fields=id,name,email", $access_token);
+
+ $facebook_user_info = $graph_response->getGraphUser();
 
 
+$id=$facebook_user_info->getId();
+$ime=$facebook_user_info->getName();
+$email=$facebook_user_info->getEmail();
+$picture='https://graph.facebook.com/'.$id.'/picture';
 
-<script>
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
+        //check if user exists
+        $query = "SELECT * FROM uporabniki WHERE facebook_id=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$id]);
+        
+        if ($stmt->rowCount() == 1) {
+        $user = $stmt->fetch();
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['username'];
+        $_SESSION['image'] = $user['image'];
+        header('location:/index.php');
+        }
+
+        else{
+
+            // if user not exists we will insert the user
+            $query = 'INSERT INTO uporabniki (facebook_id,username,email) VALUES (?,?,?)';
+            $pdo->prepare($query)->execute([$id, $ime, $email]);
+            echo $id;
+            $googleId = "SELECT * FROM uporabniki WHERE facebook_id=?";
+            $google = $pdo->prepare($googleId);
+            $google->execute([$id]);
+            $user = $google->fetch();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['username'];
+            $_SESSION['image'] = $user['image'];
+            //echo /*$_SESSION['user_id'] = */$user;
+            echo 'vneslo novega userja';
+            header('location:/index.php');
+
+            }
+    
 }
-</script>
+else
+{
+ // Get login url
+    $facebook_permissions = ['email']; // Optional permissions
 
-<?php 
+    $facebook_login_url = $facebook_helper->getLoginUrl('https://oblaak.si/facebook_login.php', $facebook_permissions);
 
-
-
-
+    // Render Facebook login button
+    header('Location:'.$facebook_login_url);
+}
 ?>

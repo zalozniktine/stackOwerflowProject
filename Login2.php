@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])){
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="page_type" content="np-template-header-footer-from-plugin" />
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="nicepage.css" media="screen" />
     <link rel="stylesheet" href="Register.css" media="screen" />
     <link rel="stylesheet" href="Login.css" media="screen" />
@@ -264,12 +264,12 @@ u-btn-1
                     </svg><img /></span>&nbsp;Continue with with Google
             </a>
 
-            <div style="padding:10px 10px 10px 10px" class="fb-login-button center" data-width="" data-size="large"
-                data-button-type="continue_with" data-layout="default" data-auto-logout-link="false"
-                data-use-continue-as="false"></div>
-
-
-            <?php include 'facebook_login.php' ?>
+            <div><a style="border: 1px solid black; padding:7px 61px 7px 61px; border-radius:4px; margin-top:10px; margin-bottom:10px; font-family:Open Sans, sans-serif;
+            font-size:15px; color:white; font-weight:700; background-color:#4267B2" class=" center"
+                    href="facebook_login.php">
+                    <img src="assets/icons/facebook-icon.png" alt="">
+                    <span>Continue with Facebook</span>
+                </a></div>
             <div class="center">
                 <table>
                     <form action="login_check.php" method="post">

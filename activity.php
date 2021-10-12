@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])){
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
+    <title>My Activity</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Home.css" media="screen">
     <link rel="stylesheet" href="activity.css">
@@ -180,12 +180,8 @@ if (!isset($_SESSION['user_id'])){
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a href="profile.php"
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){
-                                    echo $user_name;
-                                } ?>
-                            </a>
+                        <li class="u-nav-item">
+                            <?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>
@@ -244,12 +240,7 @@ if (!isset($_SESSION['user_id'])){
                                             $img = $profile['image'];
                                             
                                             if (empty($img)){
-                                                echo '
-                                                <div
-                                                style="font-size: 50px; text-transform: capitalize; color:white; width:128px; height:128px; background-color:#5c6bc3; border-radius: 5px; text-align:center; padding-top:23px">
-                                                '.$user_name[0].'
-                                                </div>
-                                                ';
+                                                echo '<img class="postmedia" src="profile_pictures/default.png">';
                                             }else{
                                                 echo
                                                 '<img class="postmedia" src="'.$img.'">';
@@ -373,21 +364,6 @@ if (!isset($_SESSION['user_id'])){
     </section>
 
 
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
-        <div class="u-clearfix u-sheet u-sheet-1">
-        </div>
-    </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Template</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-            <span>HTML Builder</span>
-        </a>.
-    </section>
 </body>
 
 </html>

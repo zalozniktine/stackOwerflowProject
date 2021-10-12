@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])){
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
+    <title>My profile</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -320,12 +320,6 @@ if (!isset($_SESSION['user_id'])){
         </div>
     </section>
 
-
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
-        <div class="u-clearfix u-sheet u-sheet-1">
-        </div>
-    </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
 
     </section>
 </body>

@@ -25,9 +25,9 @@ if (!empty($username) && !empty($email) && !empty($pass1) && ($pass1 == $pass2) 
         $pdo->prepare($query)->execute([$username, $email, $pass]);
 
         echo "kul";
-    //header("Location: Login.php");
+        header("Location: login2.php");
     } else {
         echo "ni kul";
-        //header("Location: registration.php");
+        header("Location: registration.php");
     }
 ?>

@@ -12,7 +12,7 @@ $client->setClientId('973846383263-v7o84bbv79sq07m34badb6kd808v4jgg.apps.googleu
 // Enter your Client Secrect
 $client->setClientSecret('zqNNC4dEp6ShSMMqyYExaofY');
 // Enter the Redirect URL
-$client->setRedirectUri('http://localhost:3000/google_login/login_google_check.php');
+$client->setRedirectUri('https://oblaak.si/google_login/login_google_check.php');
 
 // Adding those scopes which we want to get (email & profile Information)
 $client->addScope("email");

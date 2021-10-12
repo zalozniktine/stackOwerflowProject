@@ -24,6 +24,6 @@ if (!empty($email) && !empty($pass)) {
         }
     }
 }
-//header("Location: login.php");
+header('Refresh: 2; URL=https://oblaak.si/login2.php');
 echo 'neuspesna prijava';
 ?>

@@ -19,7 +19,7 @@ if(!isset($user_id)){
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="page_type" content="np-template-header-footer-from-plugin" />
-    <title>Register</title>
+    <title>Ask question</title>
     <link rel="stylesheet" href="nicepage.css" media="screen" />
     <link rel="stylesheet" href="ask_question.css">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
