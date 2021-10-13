@@ -8,6 +8,8 @@ $id = $_GET['id'];
 <html style="font-size: 16px;">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -45,12 +47,12 @@ $id = $_GET['id'];
 
 <body data-home-page="https://stackowerflow.nicepage.io/Home.html?version=2d41e077-21ae-4b91-b81d-c58cb51ca37a"
     data-home-page-title="Home" class="u-body">
-    <header class="u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-header" id="sec-563b">
+    <header class="resp u-align-center-xs u-border-1 u-border-grey-25 u-clearfix u-header u-header" id="sec-563b">
         <?php
 ?>
-        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xs u-sheet-1">
+        <div class="padd u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xs u-sheet-1">
             <nav class="u-hidden-lg u-hidden-md u-hidden-sm u-hidden-xl u-menu u-menu-dropdown u-offcanvas u-menu-1">
-                <div class="menu-collapse">
+                <div class="padd menu-collapse">
                     <a class="u-button-style u-nav-link" href="#">
                         <svg>
                             <use xlink:href="#menu-hamburger"></use>
@@ -69,16 +71,20 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled">
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My account</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
+                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Questions</a>
                         </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
-                        </li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
-                        </li>
+                        <?php
+                        if (!isset($_SESSION['user_id'])){
+                            echo '<li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="register.php">Register</a>
+                                </li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="u-custom-menu u-nav-container-collapse">
@@ -86,16 +92,22 @@ $id = $_GET['id'];
                         <div class="u-sidenav-overflow">
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">My account</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="profile.php">My
+                                        account</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Questions</a>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="index.php">Questions</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Tags</a>
+                                <?php
+                        if (!isset($_SESSION['user_id'])){
+                            echo '<li class="u-nav-item"><a class="u-button-style u-nav-link" href="login2.php">Login</a>
                                 </li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Users</a>
-                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="register.php">Register</a>
+                                </li>';
+                        }
+                        ?>
                             </ul>
                         </div>
                     </div>
@@ -106,7 +118,8 @@ $id = $_GET['id'];
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1">
             </a>
-            <form action="#" method="get" class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
+            <form action="index.php" method="get"
+                class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
                 <button class="u-search-button" type="submit">
                     <span class="u-search-icon u-spacing-10 u-text-grey-40">
                         <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"
@@ -174,10 +187,7 @@ $id = $_GET['id'];
                 </div>
                 <div class="u-custom-menu u-nav-container">
                     <ul class="u-nav u-unstyled u-nav-3">
-                        <li class="u-nav-item"><a href="profile.php"
-                                class="u-button-style u-na v-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                style="padding: 10px 20px;"><?php if(isset($_SESSION['user_id'])){echo $user_name;}  ?>
-                            </a>
+                        <li class="u-nav-item"><?php include 'loginD.php' ?>
                         </li>
                     </ul>
                 </div>
@@ -204,15 +214,15 @@ $id = $_GET['id'];
                 <div class="u-layout">
                     <div class="u-layout-row">
                         <div
-                            class="u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
+                            class="hide u-align-center-xs u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-container-style u-layout-cell u-shape-rectangle u-size-13 u-layout-cell-1">
                             <div class="u-container-layout u-container-layout-1">
                                 <h5 class="u-hidden-xs u-text u-text-1">Home</h5>
                                 <p class="u-hidden-xs u-text u-text-default u-text-2">PUBLIC</p>
                                 <ul
                                     class="levo u-hidden-xs u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-3">
-                                    <li>Questions</li>
-                                    <li>Tags</li>
-                                    <li>Users</li>
+                                    <li><a href="index.php">Questions</a></li>
+                                    <li><a href="profile.php">My profile</a></li>
+                                    <li><a href="activity.php">My activity</a></li>
                                 </ul>
                                 <img class="u-hidden-lg u-hidden-md u-hidden-sm u-hidden-xl u-image u-image-default u-preserve-proportions u-image-1"
                                     src="images/1200px-Stack_Overflow_logo.svg-Copy.png" alt="" data-image-width="201"
@@ -221,20 +231,9 @@ $id = $_GET['id'];
                         </div>
                         <div class="u-container-style u-layout-cell u-shape-rectangle u-size-47 u-layout-cell-2">
                             <div class="u-container-layout u-container-layout-2">
-                                <div class="button">
-                                    <a href="
-                                <?php
-                                if(isset($user_id)){
-                                    echo 'ask_question.php';
-                                }else{
-                                    echo 'login2.php';
-                                }
-                                ?>
-                                " class=" u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base
-                                    u-radius-6 u-btn-1">Ask
-                                        Question</a>
-
-                                    <h3 style="border-bottom: black 1px solid; width:600px; padding-bottom:10px; margin-left:0px"
+                                <div class="width">
+                                    <h3 class="width"
+                                        style="margin-top:10px; border-bottom: grey 0.5px solid; padding-bottom:10px; margin-left:0px"
                                         class="u-text u-text-default u-text-4">
                                         <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
@@ -246,16 +245,54 @@ $id = $_GET['id'];
                                     ?>
                                     </h3>
                                 </div>
-                                <?php
+                                <div class="width">
+                                    <p>
+                                        <?php
                                         $query = "SELECT * FROM vprasanja WHERE id=?";
                                         $stmt = $pdo->prepare($query);
                                         $stmt->execute([$id]);
                                         $question = $stmt->fetch();
+                                        $question_date = date("M j, g:i a", strtotime($question['datum_objave']));
+
+                                        $stmtv = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                        $stmtv->execute([$question['uporabnik_id']]);
+                                        $userqe = $stmtv->fetch();
+                                        $username4 = $userqe['username'];
+                                        $img4 = $userqe['image'];
+
                                         echo $question['Opis'];
                                     ?>
-                                <hr>
+                                    </p>
 
-                                <table>
+                                </div>
+
+
+                                <table class="width">
+                                    <tr>
+                                        <td>
+                                            <div style="position:relative; float:right">
+                                                <table>
+                                                    <tr>
+                                                        <td colspan="2">Asked <?php echo $question_date;?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:33px">
+                                                            <?php
+                                                            if (empty($img4)){
+                                                                echo '<img class="postmedia" src="profile_pictures/default.png">';
+                                                            }else{
+                                                                echo
+                                                                '<img class="postmedia" src="'.$img4.'">';
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td style="text-align:left">&nbsp&nbsp<?php echo $username4 ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php
                                     $query2 = "SELECT * FROM odgovori WHERE vprasanje_id=?";
                                     $stmt2 = $pdo->prepare($query2);
@@ -264,7 +301,7 @@ $id = $_GET['id'];
                                     
                                     echo 
                                         '<tr>'
-                                        .'<td>Stevilo odgovorov: '.$count.'</td>'
+                                        .'<td class="width">Answers: '.$count.'<hr  style="color:grey;background-color:gray;border-width:1;opacity:0.3"></td>'
                                         .'</tr> ';
                                     //$display = 0;
                                     while ($answer = $stmt2->fetch(PDO::FETCH_ASSOC)) {
@@ -275,6 +312,11 @@ $id = $_GET['id'];
                                         $stmt4 ->execute([$answer['id']]);
                                         while ($like = $stmt4->fetch(PDO::FETCH_ASSOC)) {
                                             $display += $like['Value'];
+                                            $value = $like['Value'];
+                                            $likeU = $like['uporabnik_id'];
+                                            $likeO = $like['odgovor_id'];
+
+                                            
                                         }
                                         ?>
 
@@ -293,18 +335,76 @@ $id = $_GET['id'];
                                         '<tr>'
                                         .'<td>
                                         
-                                        <span style="padding-right:40px">
-                                        <table style="float:left">
-                                        </tr><td><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>
-                                        </tr><td style="text-align:center">'.$display.'</td></tr>
-                                        </tr><td><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>
+                                        <div style="width:100%; padding-top:30px">
+                                        <table style="float:left; padding-right:30px">
+                                        ';
+                                        if (!isset($value)){
+                                            $value = 3;
+                                        }
+                                        if($value== '1' and $likeU==$user_id and $likeO==$answer['id']){
+                                            echo '<tr><td style="padding-right:30px" ><a class="disabled" onclick="upvote('.$tog1.')" href="#"><div class="arrowo"></div></a></td></tr>';
+                                        }else{
+                                            echo '<tr><td style="padding-right:30px" ><a onclick="upvote('.$tog1.')" href="#"><div class="arrow1"></div></a></td></tr>';
+                                        }
+                                        echo '<tr><td style="text-align:center; padding-right:30px;">'.$display.'</td></tr>';;
+                                        if($value== '-1' and $likeU==$user_id and $likeO==$answer['id']){
+                                            echo '<tr><td style="padding-right:30px" ><a class="disabled" onclick="downvote('.$dog2.')" href="#"><div class="arrowdo"></div></a></td></tr>';
+                                        }else{
+                                            echo '<tr><td style="padding-right:30px" ><a onclick="downvote('.$dog2.')" href="#"><div class="arrow2"></div></a></td></tr>';
+                                        }
+                                        echo'
                                         </table>
                                         <form id="'.$tog.'" action="upvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
                                         <form id="'.$dog.'" action="downvote.php" method="post"><input type="hidden" name="answer_id" value='.$answer['id'].'><input type="hidden" name="question_id" value='.$question['id'].'></form>
-                                        </span>
+                                        
                                         '.$answer['odgovor']
                                         .'</td>'
-                                        .'</tr> '; ?>
+                                        .'</tr> </div>'; ?>
+                                    <tr style="float:right">
+                                        <td colspan="2">
+                                            <div>
+                                                <table>
+                                                    <?php
+                                                    $stmt4 = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                                    $stmt4->execute([$answer['uporabnik_id']]);
+                                                    $user = $stmt4->fetch();
+                                                    $username = $user['username'];
+                                                    $img = $user['image'];
+
+                                                $datum = date("M j, g:i a", strtotime($answer['datum_objave']));
+
+                                                echo 
+                                                '<tr><td colspan="2" style="padding-top:20px">'
+                                                .'Answered '.$datum.''
+                                                .'</td></tr>'
+                                                .'<tr><td style="width:33px">';
+                                                if (empty($img)){
+                                                    echo '<img class="postmedia" src="profile_pictures/default.png">';
+                                                }else{
+                                                    echo
+                                                    '<img class="postmedia" src="'.$img.'">';
+                                                }
+                                                echo
+                                                '</td>'
+                                                .'<td style="text-align:left">'
+                                                .'&nbsp&nbsp'.$username
+                                                .'</td>'
+                                                .'</tr>';
+                                                
+                                                ?>
+                                                </table>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-bottom:1px solid rgb(211, 211, 211);"></td>
+                                    </tr>
+
+
+
+
+
                                     <script>
                                     function myFunction(val) {
                                         //document.getElementById("comment").submit();
@@ -325,20 +425,31 @@ $id = $_GET['id'];
                                     $query3 = "SELECT * FROM komentarji WHERE odgovor_id=?";
                                         $stmt3 = $pdo->prepare($query3);
                                         $stmt3->execute([$answer['id']]);
+                                        
                                         while ($comment = $stmt3->fetch(PDO::FETCH_ASSOC)) {
+                                            $datum_comment = date("M j, g:i a", strtotime($comment['datum_objave']));
+                                            $stmtc = $pdo->prepare("SELECT * FROM uporabniki WHERE id=?");
+                                            $stmtc->execute([$comment['uporabnik_id']]);
+                                            $upo = $stmtc->fetch();
+                                            $user_comment = $upo['username'];
                                             echo
-                                        '<tr>'
-                                        //.'<td></td>'
-                                        .'<td style="padding-left:50px" class="celica">'.$comment['komentar'].'</td>'
-                                        .'</tr> ';
+                                        //'<table style="width:90%; font-size:13px">'
+                                        '<tr style="font-size:13px ">'
+                                        .'<td style="border-bottom:solid 0.5px rgba(211, 211, 211, .6); padding-left:50px" class="celica">'.$comment['komentar'].
+                                        '<span style="color:blue">&nbsp-&nbsp'.$user_comment.'</span>&nbsp<span style="color:#989898">'.$datum_comment.'</span>
+                                        
+                                        </td>'
+                                        .'</tr> 
+                                        ';
                                         }
                                         echo
                                         '<tr>'
-                                        .'<td ><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
+                                        .'<td style="padding-bottom: 10px; border-bottom:grey solid 0.5px" ><a onclick="myFunction('.$answer['id'].')" style="font-size:14px" href="#">Add a comment</a></td>'
                                         .'</tr>'
-                                        .'<tr>'
                                         .'<td>
+
                                         <form id="'.$answer['id'].'" style="display:none" action="comment_insert.php" method="post">
+                                        <input type="hidden" name="question_id" value="'.$id.'">
                                         <table>
                                         <tr>
                                         <td><textarea  style="font-size:12px;" name="comment" id="" cols="70" rows="2"></textarea></td>
@@ -346,12 +457,11 @@ $id = $_GET['id'];
                                         <tr>
                                         <td>
                                         <input type="hidden" name="answer_id" value='.$answer['id'].'>
-                                        <input style="font-size:12px; float:right" type="submit" value="Submit"></td>
+                                        <input style="font-size:12px; float:right" type="submit" value="Submit">
+                                        </td>
                                         </tr>
                                         </table>
-                                        </form>
-                                        </td>'
-                                        .'</tr>';
+                                        </form>';
                                     }
                                 ?>
                                 </table>
@@ -363,8 +473,7 @@ $id = $_GET['id'];
                                     <?php
                                     echo "<input name='question_id' type='hidden' value='$id'>";
                                     ?>
-                                    <input
-                                        class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1"
+                                    <input class="u-btn-round u-button-style u-palette-1-base u-radius-6 u-btn-1"
                                         type="submit" value="Post Your Answer">
 
                                 </form>
@@ -377,23 +486,11 @@ $id = $_GET['id'];
     </section>
 
 
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
+    <footer class="hide u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-39db">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click
-                again or double click to start editing the text.</p>
+
         </div>
     </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-        <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-            <span>HTML Template</span>
-        </a>
-        <p class="u-text">
-            <span>created with</span>
-        </p>
-        <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-            <span>HTML Builder</span>
-        </a>.
-    </section>
 </body>
 
 </html>

@@ -118,8 +118,7 @@ $id = $_GET['id'];
                 data-image-height="236">
                 <img src="images/1200px-Stack_Overflow_logo.svg.png" class="u-logo-image u-logo-image-1">
             </a>
-            <form action="index.php" method="get"
-                class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
+            <form action="#" method="get" class="u-border-1 u-border-grey-15 u-search u-search-right u-search-1">
                 <button class="u-search-button" type="submit">
                     <span class="u-search-icon u-spacing-10 u-text-grey-40">
                         <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"
@@ -294,7 +293,8 @@ $id = $_GET['id'];
                                         </td>
                                     </tr>
                                     <?php
-                                    $query2 = "SELECT * FROM odgovori WHERE vprasanje_id=?";
+                                    $query2 = "SELECT o.datum_objave AS datum_objave, o.uporabnik_id AS uporabnik_id, o.id AS id, o.odgovor, SUM(l.Value) AS val FROM odgovori o INNER JOIN lajki l ON l.odgovor_id=o.id WHERE o.vprasanje_id = ?  GROUP BY o.odgovor ORDER BY SUM(l.Value) DESC";
+                                    //$query2 = "SELECT * FROM odgovori WHERE vprasanje_id=?";
                                     $stmt2 = $pdo->prepare($query2);
                                     $stmt2->execute([$id]);
                                     $count = $stmt2->rowCount();
