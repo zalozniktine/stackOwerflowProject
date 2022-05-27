@@ -1,5 +1,5 @@
 Spletna stran Stack Cloud je ustvarjena po zgledu strani stackOwerflow.
-Povezava https://oblaak.si
+
 
 Prva stran prikaže vsa vprašanja:
 
